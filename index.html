@@ -3,17 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Franzen Art | Portfólio</title>
+  <title>FranzenArt | Digital Artist & Creator</title>
   
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
-    /* --- CSS MODERNO E ESTILIZAÇÃO --- */
     :root {
       --bg-principal: #0b0b10;
       --bg-card: #161626;
       --cor-primaria: #6c63ff;
-      --cor-neon: #8b85ff;
       --texto-claro: #ffffff;
       --texto-escuro: #a0a0b5;
     }
@@ -37,7 +35,6 @@
       padding: 80px 20px;
       background: linear-gradient(135deg, #111126 0%, #0b0b10 100%);
       border-bottom: 1px solid #22223b;
-      position: relative;
     }
 
     header h1 {
@@ -55,10 +52,21 @@
       font-size: 18px;
     }
 
+    .badge {
+      display: inline-block;
+      background: rgba(108, 99, 255, 0.2);
+      color: #9d96ff;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 600;
+      margin-top: 15px;
+    }
+
     section {
       max-width: 950px;
       margin: auto;
-      padding: 50px 20px;
+      padding: 40px 20px;
     }
 
     h2 {
@@ -83,15 +91,9 @@
       border-radius: 16px;
       border: 1px solid #23233a;
       box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-      transition: transform 0.3s ease, border-color 0.3s ease;
     }
 
-    .card:hover {
-      transform: translateY(-4px);
-      border-color: var(--cor-primaria);
-    }
-
-    /* Galeria em Grid Responsiva */
+    /* Galeria Segura e Responsiva */
     .gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -104,12 +106,11 @@
       overflow: hidden;
       border: 1px solid #23233a;
       cursor: pointer;
-      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
     .gallery-item:hover {
       transform: scale(1.03);
-      box-shadow: 0 15px 30px rgba(108, 99, 255, 0.2);
     }
 
     .gallery-item img {
@@ -117,29 +118,24 @@
       height: 240px;
       object-fit: cover;
       display: block;
-      transition: filter 0.3s ease;
-    }
-
-    .gallery-item:hover img {
-      filter: brightness(1.1);
     }
 
     .gallery-item span {
       display: block;
       padding: 15px;
-      font-size: 15px;
-      font-weight: 500;
+      font-size: 14px;
+      font-weight: 600;
       color: var(--texto-escuro);
       text-align: center;
       background: #121220;
     }
 
-    /* Botões das Redes Sociais Estilizados */
+    /* Hub de Redes Sociais Dinâmico */
     .social-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
       gap: 15px;
-      margin-top: 20px;
+      margin-top: 10px;
     }
 
     .social-btn {
@@ -158,16 +154,11 @@
       transition: all 0.2s ease;
     }
 
-    .social-btn i {
-      font-size: 18px;
-    }
-
     .btn-instagram:hover { background: #E1306C; border-color: #E1306C; }
     .btn-tiktok:hover { background: #000000; border-color: #333; }
     .btn-youtube:hover { background: #FF0000; border-color: #FF0000; }
-    .btn-email:hover { background: var(--cor-primaria); border-color: var(--cor-primaria); }
 
-    /* --- JAVASCRIPT LIGHTBOX (VISUALIZADOR) STYLE --- */
+    /* Estilo do Visualizador de Imagens (Lightbox) */
     .lightbox {
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
@@ -192,12 +183,6 @@
       max-height: 85vh;
       border-radius: 8px;
       box-shadow: 0 0 40px rgba(0,0,0,0.8);
-      transform: scale(0.9);
-      transition: transform 0.3s ease;
-    }
-
-    .lightbox.active img {
-      transform: scale(1);
     }
 
     .lightbox-close {
@@ -224,54 +209,54 @@
 <body>
 
   <header>
-    <h1>Franzen Art</h1>
-    <p>Portfólio de desenhos e projetos criativos</p>
+    <h1>FranzenArt</h1>
+    <p>Digital Artist & Creator</p>
+    <span class="badge">Art, memes and internet culture</span>
   </header>
 
   <section>
-    <h2><i class="fa-solid fa-user" style="color: var(--cor-primaria);"></i> Sobre mim</h2>
+    <h2><i class="fa-solid fa-user" style="color: var(--cor-primaria);"></i> Sobre o Artista</h2>
     <div class="card">
-      <p style="font-size: 16px; color: var(--texto-escuro);">
-        Olá! Eu sou o Gabriel e criei o Franzen Art para compartilhar meus desenhos,
-        criatividade e evolução como artista e futuro desenvolvedor. Explore minhas artes abaixo!
+      <p style="color: var(--texto-escuro);">
+        Artista digital independente e criador de conteúdo focado em construir presença nas redes sociais através de ilustrações visuais criativas. O trabalho explora a transformação de memes da internet, fanarts de personagens marcantes da cultura pop e universo dos jogos em arte digital de alto engajamento.
       </p>
     </div>
   </section>
 
   <section>
-    <h2><i class="fa-solid fa-palette" style="color: var(--cor-primaria);"></i> Minha Galeria</h2>
+    <h2><i class="fa-solid fa-palette" style="color: var(--cor-primaria);"></i> Portfólio</h2>
     <div class="gallery">
       <div class="gallery-item" onclick="openLightbox(this)">
-        <img src="imagem1.jpg" alt="Desenho Realista">
-        <span>Desenho Realista</span>
+        <img src="imagem1.jpg" alt="Fanart / Meme / Character">
+        <span>Fanart / Meme / Character</span>
       </div>
       <div class="gallery-item" onclick="openLightbox(this)">
-        <img src="imagem2.jpg" alt="Lineart & Conceito">
-        <span>Lineart & Conceito</span>
+        <img src="imagem2.jpg" alt="Fanart / Meme / Character">
+        <span>Fanart / Meme / Character</span>
       </div>
       <div class="gallery-item" onclick="openLightbox(this)">
-        <img src="imagem3.jpg" alt="Estudo de Cores">
-        <span>Estudo de Cores</span>
+        <img src="imagem3.jpg" alt="Fanart / Meme / Character">
+        <span>Fanart / Meme / Character</span>
       </div>
       <div class="gallery-item" onclick="openLightbox(this)">
-        <img src="imagem4.jpg" alt="Arte Digital">
-        <span>Arte Digital</span>
+        <img src="imagem4.jpg" alt="Fanart / Meme / Character">
+        <span>Fanart / Meme / Character</span>
       </div>
     </div>
   </section>
 
   <section>
-    <h2><i class="fa-solid fa-code" style="color: var(--cor-primaria);"></i> Projetos</h2>
+    <h2><i class="fa-solid fa-bolt" style="color: var(--cor-primaria);"></i> Identidade Artística</h2>
     <div class="card">
-      <p style="color: var(--texto-escuro);">Aqui você pode colocar seus futuros projetos de programação, sites e ideias de jogos.</p>
+      <p style="color: var(--texto-escuro);">
+        Uma convergência experimental entre arte digital contemporânea e internet culture. Produção baseada em conteúdo ágil e dinâmico, focado na consistência, evolução expressiva contínua e conexão direta com comunidades digitais.
+      </p>
     </div>
   </section>
 
   <section>
-    <h2><i class="fa-solid fa-link" style="color: var(--cor-primaria);"></i> Contato & Redes</h2>
+    <h2><i class="fa-solid fa-link" style="color: var(--cor-primaria);"></i> Redes Sociais</h2>
     <div class="card">
-      <p style="color: var(--texto-escuro); margin-bottom: 15px;">Acompanhe meus novos lançamentos e processos criativos:</p>
-      
       <div class="social-grid">
         <a href="https://www.instagram.com/franzen__art?igsh=MWNpczVwb2EzODViYw==" target="_blank" class="social-btn btn-instagram">
           <i class="fa-brands fa-instagram"></i> Instagram
@@ -282,20 +267,17 @@
         <a href="https://youtube.com/@franzenart?si=s8d_4cuUpZ2AVm_a" target="_blank" class="social-btn btn-youtube">
           <i class="fa-brands fa-youtube"></i> YouTube
         </a>
-        <a href="mailto:seuemail@email.com" class="social-btn btn-email">
-          <i class="fa-solid fa-envelope"></i> Email
-        </a>
       </div>
     </div>
   </section>
 
   <div class="lightbox" id="lightbox" onclick="closeLightbox()">
     <button class="lightbox-close">&times;</button>
-    <img id="lightbox-img" src="" alt="Imagem ampliada">
+    <img id="lightbox-img" src="" alt="Ampliação de Arte">
   </div>
 
   <footer>
-    © 2026 Franzen Art — Todos os direitos reservados
+    © 2026 FranzenArt — Todos os direitos reservados
   </footer>
 
   <script>
@@ -314,4 +296,5 @@
   </script>
 
 </body>
-</html>
+  </html>
+  
