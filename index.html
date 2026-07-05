@@ -19,16 +19,15 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
-    /* --- CONFIGURAÇÕES VISUAIS DA IDENTIDADE ARTÍSTICA --- */
+    /* --- NOVA CONFIGURAÇÃO DE CORES ARTÍSTICAS (AZUL, PRETO & BRANCO) --- */
     :root {
-      --bg-principal: #06060a;
-      --bg-card: rgba(22, 22, 38, 0.7); /* Efeito Vidro */
-      --cor-primaria: #7b2cbf;
-      --cor-secundaria: #ff007f;
-      --cor-neon: #b5179e;
+      --bg-principal: #040408;
+      --bg-card: rgba(14, 20, 32, 0.6); /* Efeito Vidro Escuro */
+      --cor-primaria: #0077ff; /* Azul Elétrico */
+      --cor-secundaria: #00f2ff; /* Ciano/Azul Claro */
       --texto-claro: #ffffff;
-      --texto-escuro: #a0a0c0;
-      --borda-glow: rgba(123, 44, 191, 0.25);
+      --texto-escuro: #90a4ae;
+      --borda-glow: rgba(0, 119, 255, 0.2);
     }
 
     * {
@@ -43,61 +42,94 @@
       color: var(--texto-claro);
       overflow-x: hidden;
       line-height: 1.6;
-      /* Background com sutil textura de gradiente artístico */
+      /* Background artístico simulando malha digital com luz azul de fundo */
       background-image: 
-        radial-gradient(circle at 10% 20%, rgba(123, 44, 191, 0.15) 0%, transparent 40%),
-        radial-gradient(circle at 90% 80%, rgba(255, 0, 127, 0.1) 0%, transparent 40%);
+        radial-gradient(circle at 50% 15%, rgba(0, 119, 255, 0.12) 0%, transparent 50%),
+        linear-gradient(rgba(255,255,255,0.01) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.01) 1px, transparent 1px);
+      background-size: 100% 100%, 40px 40px, 40px 40px;
     }
 
-    /* Header Estilo Galeria Cyberpunk / Artística */
+    /* Header Compacto e Sofisticado */
     header {
       text-align: center;
-      padding: 100px 20px;
-      background: linear-gradient(180deg, rgba(17, 17, 38, 0.4) 0%, var(--bg-principal) 100%);
-      border-bottom: 1px solid rgba(123, 44, 191, 0.2);
+      padding: 90px 20px 50px 20px;
+      background: linear-gradient(180deg, rgba(10, 18, 32, 0.5) 0%, var(--bg-principal) 100%);
+      border-bottom: 1px solid rgba(0, 119, 255, 0.15);
     }
 
     header h1 {
-      font-size: 56px;
+      font-size: 52px;
       font-weight: 900;
-      letter-spacing: -2px;
+      letter-spacing: -1px;
       text-transform: uppercase;
-      background: linear-gradient(45deg, var(--texto-claro) 20%, var(--cor-secundaria) 50%, var(--cor-primaria) 80%);
+      background: linear-gradient(45deg, var(--texto-claro) 40%, var(--cor-secundaria));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      filter: drop-shadow(0 0 15px rgba(255, 0, 127, 0.3));
+      filter: drop-shadow(0 0 10px rgba(0, 119, 255, 0.2));
     }
 
     header p {
       color: var(--texto-escuro);
-      margin-top: 15px;
-      font-size: 20px;
+      margin-top: 10px;
+      font-size: 18px;
       font-weight: 500;
-      letter-spacing: 1px;
+      letter-spacing: 0.5px;
     }
 
     .badge {
       display: inline-block;
-      background: linear-gradient(90deg, rgba(123, 44, 191, 0.3), rgba(255, 0, 127, 0.3));
-      color: #f7d6ff;
-      padding: 6px 16px;
+      background: rgba(0, 119, 255, 0.1);
+      color: #a6d5ff;
+      padding: 5px 14px;
       border-radius: 30px;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 700;
-      margin-top: 20px;
-      border: 1px solid rgba(255, 0, 127, 0.3);
+      margin-top: 15px;
+      border: 1px solid rgba(0, 119, 255, 0.25);
       text-transform: uppercase;
       letter-spacing: 1px;
+    }
+
+    /* Hub de Redes Sociais no Cabeçalho - Integrado e Elegante */
+    .header-socials {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 25px;
+    }
+
+    .social-icon-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      color: var(--texto-claro);
+      text-decoration: none;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 18px;
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    .social-icon-btn:hover {
+      background: rgba(0, 119, 255, 0.15);
+      border-color: var(--cor-secundaria);
+      color: var(--cor-secundaria);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 242, 255, 0.2);
     }
 
     section {
       max-width: 950px;
       margin: auto;
-      padding: 45px 20px;
+      padding: 40px 20px;
     }
 
     h2 {
-      font-size: 26px;
+      font-size: 24px;
       font-weight: 700;
       margin-bottom: 25px;
       display: flex;
@@ -111,29 +143,28 @@
     h2::after {
       content: '';
       flex-grow: 1;
-      height: 2px;
-      background: linear-gradient(90deg, var(--cor-primaria), var(--cor-secundaria), transparent);
+      height: 1px;
+      background: linear-gradient(90deg, var(--cor-primaria), transparent);
     }
 
-    /* Cards com efeito Glassmorphism */
+    /* Cards Estilo Estúdio Digital */
     .card {
       background: var(--bg-card);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      padding: 35px;
-      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      padding: 30px;
+      border-radius: 16px;
       border: 1px solid var(--borda-glow);
-      box-shadow: 0 15px 35px rgba(0,0,0,0.5);
-      transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+      transition: border-color 0.4s ease, box-shadow 0.4s ease;
     }
 
     .card:hover {
-      transform: translateY(-5px);
-      border-color: rgba(255, 0, 127, 0.5);
-      box-shadow: 0 20px 40px rgba(123, 44, 191, 0.25);
+      border-color: rgba(0, 242, 255, 0.3);
+      box-shadow: 0 15px 35px rgba(0, 119, 255, 0.15);
     }
 
-    /* Galeria de Artes Estilizada */
+    /* Galeria de Artes */
     .gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -141,8 +172,8 @@
     }
 
     .gallery-item {
-      background: #11111e;
-      border-radius: 18px;
+      background: #0b111e;
+      border-radius: 14px;
       overflow: hidden;
       border: 1px solid var(--borda-glow);
       cursor: pointer;
@@ -151,9 +182,9 @@
     }
 
     .gallery-item:hover {
-      transform: scale(1.04);
+      transform: translateY(-4px);
       border-color: var(--cor-secundaria);
-      box-shadow: 0 15px 35px rgba(255, 0, 127, 0.25);
+      box-shadow: 0 12px 25px rgba(0, 119, 255, 0.2);
     }
 
     .gallery-item img {
@@ -171,67 +202,21 @@
 
     .gallery-item span {
       display: block;
-      padding: 18px;
-      font-size: 14px;
+      padding: 15px;
+      font-size: 13px;
       font-weight: 700;
       color: var(--texto-claro);
       text-align: center;
-      background: #0d0d16;
-      border-top: 1px solid rgba(255, 0, 127, 0.1);
+      background: #070b14;
+      border-top: 1px solid rgba(0, 119, 255, 0.1);
       letter-spacing: 0.5px;
     }
 
-    /* Hub de Redes Sociais com Brilho Neon Ativo */
-    .social-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 15px;
-      margin-top: 10px;
-    }
-
-    .social-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      padding: 16px;
-      border-radius: 14px;
-      color: var(--texto-claro);
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 15px;
-      background: rgba(31, 31, 56, 0.5);
-      border: 1px solid rgba(123, 44, 191, 0.3);
-      backdrop-filter: blur(4px);
-      -webkit-backdrop-filter: blur(4px);
-      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    }
-
-    .social-btn i {
-      font-size: 20px;
-    }
-
-    .btn-instagram:hover { 
-      background: #E1306C; 
-      border-color: #E1306C; 
-      box-shadow: 0 0 20px rgba(225, 48, 108, 0.5);
-    }
-    .btn-tiktok:hover { 
-      background: #000000; 
-      border-color: #ffffff; 
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-    }
-    .btn-youtube:hover { 
-      background: #FF0000; 
-      border-color: #FF0000; 
-      box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
-    }
-
-    /* Transição Suave do Lightbox (Segurança Total Nao-Modificável) */
+    /* Janela do Visualizador de Imagens (Lightbox) */
     .lightbox {
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(4, 4, 8, 0.97);
+      background: rgba(2, 3, 6, 0.98);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -250,9 +235,9 @@
     .lightbox img {
       max-width: 100%;
       max-height: 85vh;
-      border-radius: 14px;
-      box-shadow: 0 0 50px rgba(123, 44, 191, 0.4);
-      border: 1px solid rgba(255, 0, 127, 0.3);
+      border-radius: 12px;
+      box-shadow: 0 0 40px rgba(0, 119, 255, 0.3);
+      border: 1px solid rgba(0, 242, 255, 0.2);
       transform: scale(0.95);
       transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     }
@@ -270,7 +255,7 @@
       color: var(--texto-claro);
       font-size: 40px;
       cursor: pointer;
-      opacity: 0.7;
+      opacity: 0.6;
       transition: opacity 0.2s ease;
     }
 
@@ -281,10 +266,10 @@
 
     footer {
       text-align: center;
-      padding: 60px 20px;
-      color: #4a4a65;
+      padding: 50px 20px;
+      color: #3f51b5;
       font-size: 13px;
-      border-top: 1px solid rgba(123, 44, 191, 0.15);
+      border-top: 1px solid rgba(0, 119, 255, 0.1);
       letter-spacing: 1px;
     }
   </style>
@@ -296,19 +281,31 @@
     <h1>FranzenArt</h1>
     <p>Digital Artist & Creator</p>
     <span class="badge">Art, memes and internet culture</span>
+    
+    <div class="header-socials">
+      <a href="https://www.instagram.com/franzen__art?igsh=MWNpczVwb2EzODViYw==" target="_blank" class="social-icon-btn" title="Instagram">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
+      <a href="https://www.tiktok.com/@franzen_art?_r=1&_t=ZS-97mbXvE90mm" target="_blank" class="social-icon-btn" title="TikTok">
+        <i class="fa-brands fa-tiktok"></i>
+      </a>
+      <a href="https://youtube.com/@franzenart?si=s8d_4cuUpZ2AVm_a" target="_blank" class="social-icon-btn" title="YouTube">
+        <i class="fa-brands fa-youtube"></i>
+      </a>
+    </div>
   </header>
 
   <section>
-    <h2><i class="fa-solid fa-face-smile-wink" style="color: var(--cor-secundaria);"></i> Quem é o Artista</h2>
+    <h2><i class="fa-solid fa-face-smile-wink" style="color: var(--cor-primaria);"></i> Quem é o Artista</h2>
     <div class="card">
-      <p style="color: var(--texto-claro); font-size: 17px; font-weight: 500; text-align: justify;">
+      <p style="color: var(--texto-claro); font-size: 16px; font-weight: 500; text-align: justify;">
         Eae, beleza? Eu sou o Gabriel Franzen, o artista por trás do perfil Franzen Art! Crio ilustrações digitais focadas em transformar os memes mais famosos da internet, personagens da cultura pop e ideias malucas em arte de alta qualidade. Minha missão é misturar criatividade e internet culture para produzir artes marcantes e de alto engajamento.
       </p>
     </div>
   </section>
 
   <section>
-    <h2><i class="fa-solid fa-fire" style="color: var(--cor-secundaria);"></i> Portfólio</h2>
+    <h2><i class="fa-solid fa-palette" style="color: var(--cor-primaria);"></i> Portfólio</h2>
     <div class="gallery">
       <div class="gallery-item" onclick="openLightbox(this)">
         <img src="imagem1.jpg" alt="Ilustração digital de meme feita por Gabriel Franzen Art">
@@ -330,28 +327,11 @@
   </section>
 
   <section>
-    <h2><i class="fa-solid fa-wand-magic-sparkles" style="color: var(--cor-secundaria);"></i> Identidade Artística</h2>
+    <h2><i class="fa-solid fa-wand-magic-sparkles" style="color: var(--cor-primaria);"></i> Identidade Artística</h2>
     <div class="card">
       <p style="color: var(--texto-escuro); font-size: 15px;">
         Uma convergência puramente experimental entre o design digital moderno e a agilidade da internet culture. Cada criação artística foca em consistência, evolução conceitual contínua e na estruturação de narrativas curtas e virais feitas sob medida para impulsionar comunidades digitais engajadas.
       </p>
-    </div>
-  </section>
-
-  <section>
-    <h2><i class="fa-solid fa-share-nodes" style="color: var(--cor-secundaria);"></i> Redes Sociais</h2>
-    <div class="card">
-      <div class="social-grid">
-        <a href="https://www.instagram.com/franzen__art?igsh=MWNpczVwb2EzODViYw==" target="_blank" class="social-btn btn-instagram">
-          <i class="fa-brands fa-instagram"></i> Instagram
-        </a>
-        <a href="https://www.tiktok.com/@franzen_art?_r=1&_t=ZS-97mbXvE90mm" target="_blank" class="social-btn btn-tiktok">
-          <i class="fa-brands fa-tiktok"></i> TikTok
-        </a>
-        <a href="https://youtube.com/@franzenart?si=s8d_4cuUpZ2AVm_a" target="_blank" class="social-btn btn-youtube">
-          <i class="fa-brands fa-youtube"></i> YouTube
-        </a>
-      </div>
     </div>
   </section>
 
