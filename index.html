@@ -3,17 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FranzenArt | Digital Artist & Creator</title>
   
+  <title>Gabriel Franzen Art | Portfólio de Arte Digital e Memes</title>
+  <meta name="description" content="Portfólio oficial de Gabriel Franzen (FranzenArt). Ilustrações digitais criativas, fanarts de cultura pop, jogos e transformação de memes em arte de alto engajamento.">
+  <meta name="keywords" content="Gabriel Franzen, Franzen Art, FranzenArt, desenho digital, ilustrador, criador de conteúdo, memes, fanart, arte digital">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="FranzenArt">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Gabriel Franzen Art | Portfólio Oficial">
+  <meta property="og:description" content="Arte digital, memes virais e cultura da internet por FranzenArt.">
+  <meta property="og:url" content="https://franzenart.github.io/franzen-art/">
+  <meta property="og:image" content="imagem1.jpg">
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
+    /* --- CONFIGURAÇÕES VISUAIS DA IDENTIDADE ARTÍSTICA --- */
     :root {
-      --bg-principal: #0b0b10;
-      --bg-card: #161626;
-      --cor-primaria: #6c63ff;
+      --bg-principal: #06060a;
+      --bg-card: rgba(22, 22, 38, 0.7); /* Efeito Vidro */
+      --cor-primaria: #7b2cbf;
+      --cor-secundaria: #ff007f;
+      --cor-neon: #b5179e;
       --texto-claro: #ffffff;
-      --texto-escuro: #a0a0b5;
+      --texto-escuro: #a0a0c0;
+      --borda-glow: rgba(123, 44, 191, 0.25);
     }
 
     * {
@@ -28,109 +43,145 @@
       color: var(--texto-claro);
       overflow-x: hidden;
       line-height: 1.6;
+      /* Background com sutil textura de gradiente artístico */
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(123, 44, 191, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(255, 0, 127, 0.1) 0%, transparent 40%);
     }
 
+    /* Header Estilo Galeria Cyberpunk / Artística */
     header {
       text-align: center;
-      padding: 80px 20px;
-      background: linear-gradient(135deg, #111126 0%, #0b0b10 100%);
-      border-bottom: 1px solid #22223b;
+      padding: 100px 20px;
+      background: linear-gradient(180deg, rgba(17, 17, 38, 0.4) 0%, var(--bg-principal) 100%);
+      border-bottom: 1px solid rgba(123, 44, 191, 0.2);
     }
 
     header h1 {
-      font-size: 48px;
-      font-weight: 800;
-      letter-spacing: -1px;
-      background: linear-gradient(45deg, var(--texto-claro), var(--cor-primaria));
+      font-size: 56px;
+      font-weight: 900;
+      letter-spacing: -2px;
+      text-transform: uppercase;
+      background: linear-gradient(45deg, var(--texto-claro) 20%, var(--cor-secundaria) 50%, var(--cor-primaria) 80%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 0 15px rgba(255, 0, 127, 0.3));
     }
 
     header p {
       color: var(--texto-escuro);
-      margin-top: 12px;
-      font-size: 18px;
+      margin-top: 15px;
+      font-size: 20px;
+      font-weight: 500;
+      letter-spacing: 1px;
     }
 
     .badge {
       display: inline-block;
-      background: rgba(108, 99, 255, 0.2);
-      color: #9d96ff;
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-size: 14px;
-      font-weight: 600;
-      margin-top: 15px;
+      background: linear-gradient(90deg, rgba(123, 44, 191, 0.3), rgba(255, 0, 127, 0.3));
+      color: #f7d6ff;
+      padding: 6px 16px;
+      border-radius: 30px;
+      font-size: 13px;
+      font-weight: 700;
+      margin-top: 20px;
+      border: 1px solid rgba(255, 0, 127, 0.3);
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
 
     section {
       max-width: 950px;
       margin: auto;
-      padding: 40px 20px;
+      padding: 45px 20px;
     }
 
     h2 {
-      font-size: 24px;
+      font-size: 26px;
+      font-weight: 700;
       margin-bottom: 25px;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
       color: var(--texto-claro);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
     h2::after {
       content: '';
       flex-grow: 1;
-      height: 1px;
-      background: linear-gradient(90deg, var(--cor-primaria), transparent);
+      height: 2px;
+      background: linear-gradient(90deg, var(--cor-primaria), var(--cor-secundaria), transparent);
     }
 
+    /* Cards com efeito Glassmorphism */
     .card {
       background: var(--bg-card);
-      padding: 30px;
-      border-radius: 16px;
-      border: 1px solid #23233a;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      padding: 35px;
+      border-radius: 20px;
+      border: 1px solid var(--borda-glow);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+      transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
     }
 
-    /* Galeria Segura e Responsiva */
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(255, 0, 127, 0.5);
+      box-shadow: 0 20px 40px rgba(123, 44, 191, 0.25);
+    }
+
+    /* Galeria de Artes Estilizada */
     .gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
+      gap: 25px;
     }
 
     .gallery-item {
-      background: var(--bg-card);
-      border-radius: 16px;
+      background: #11111e;
+      border-radius: 18px;
       overflow: hidden;
-      border: 1px solid #23233a;
+      border: 1px solid var(--borda-glow);
       cursor: pointer;
-      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease, border-color 0.4s ease;
     }
 
     .gallery-item:hover {
-      transform: scale(1.03);
+      transform: scale(1.04);
+      border-color: var(--cor-secundaria);
+      box-shadow: 0 15px 35px rgba(255, 0, 127, 0.25);
     }
 
     .gallery-item img {
       width: 100%;
-      height: 240px;
+      height: 260px;
       object-fit: cover;
       display: block;
+      transition: transform 0.4s ease, filter 0.4s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.02);
+      filter: brightness(1.05);
     }
 
     .gallery-item span {
       display: block;
-      padding: 15px;
+      padding: 18px;
       font-size: 14px;
-      font-weight: 600;
-      color: var(--texto-escuro);
+      font-weight: 700;
+      color: var(--texto-claro);
       text-align: center;
-      background: #121220;
+      background: #0d0d16;
+      border-top: 1px solid rgba(255, 0, 127, 0.1);
+      letter-spacing: 0.5px;
     }
 
-    /* Hub de Redes Sociais Dinâmico */
+    /* Hub de Redes Sociais com Brilho Neon Ativo */
     .social-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
@@ -143,32 +194,50 @@
       align-items: center;
       justify-content: center;
       gap: 10px;
-      padding: 14px;
-      border-radius: 12px;
+      padding: 16px;
+      border-radius: 14px;
       color: var(--texto-claro);
       text-decoration: none;
-      font-weight: 600;
+      font-weight: 700;
       font-size: 15px;
-      background: #1f1f38;
-      border: 1px solid #2d2d4f;
-      transition: all 0.2s ease;
+      background: rgba(31, 31, 56, 0.5);
+      border: 1px solid rgba(123, 44, 191, 0.3);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     }
 
-    .btn-instagram:hover { background: #E1306C; border-color: #E1306C; }
-    .btn-tiktok:hover { background: #000000; border-color: #333; }
-    .btn-youtube:hover { background: #FF0000; border-color: #FF0000; }
+    .social-btn i {
+      font-size: 20px;
+    }
 
-    /* Estilo do Visualizador de Imagens (Lightbox) */
+    .btn-instagram:hover { 
+      background: #E1306C; 
+      border-color: #E1306C; 
+      box-shadow: 0 0 20px rgba(225, 48, 108, 0.5);
+    }
+    .btn-tiktok:hover { 
+      background: #000000; 
+      border-color: #ffffff; 
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    }
+    .btn-youtube:hover { 
+      background: #FF0000; 
+      border-color: #FF0000; 
+      box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+    }
+
+    /* Transição Suave do Lightbox (Segurança Total Nao-Modificável) */
     .lightbox {
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(5, 5, 10, 0.95);
+      background: rgba(4, 4, 8, 0.97);
       display: flex;
       align-items: center;
       justify-content: center;
       opacity: 0;
       pointer-events: none;
-      transition: opacity 0.3s ease;
+      transition: opacity 0.4s ease;
       z-index: 9999;
       padding: 20px;
     }
@@ -181,27 +250,42 @@
     .lightbox img {
       max-width: 100%;
       max-height: 85vh;
-      border-radius: 8px;
-      box-shadow: 0 0 40px rgba(0,0,0,0.8);
+      border-radius: 14px;
+      box-shadow: 0 0 50px rgba(123, 44, 191, 0.4);
+      border: 1px solid rgba(255, 0, 127, 0.3);
+      transform: scale(0.95);
+      transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+
+    .lightbox.active img {
+      transform: scale(1);
     }
 
     .lightbox-close {
       position: absolute;
-      top: 20px;
-      right: 20px;
+      top: 25px;
+      right: 25px;
       background: none;
       border: none;
-      color: white;
-      font-size: 35px;
+      color: var(--texto-claro);
+      font-size: 40px;
       cursor: pointer;
+      opacity: 0.7;
+      transition: opacity 0.2s ease;
+    }
+
+    .lightbox-close:hover {
+      opacity: 1;
+      color: var(--cor-secundaria);
     }
 
     footer {
       text-align: center;
       padding: 60px 20px;
-      color: #555570;
+      color: #4a4a65;
       font-size: 13px;
-      border-top: 1px solid #161626;
+      border-top: 1px solid rgba(123, 44, 191, 0.15);
+      letter-spacing: 1px;
     }
   </style>
 </head>
@@ -215,47 +299,47 @@
   </header>
 
   <section>
-    <h2><i class="fa-solid fa-user" style="color: var(--cor-primaria);"></i> Sobre o Artista</h2>
+    <h2><i class="fa-solid fa-face-smile-wink" style="color: var(--cor-secundaria);"></i> Quem é o Artista</h2>
     <div class="card">
-      <p style="color: var(--texto-escuro);">
-        Artista digital independente e criador de conteúdo focado em construir presença nas redes sociais através de ilustrações visuais criativas. O trabalho explora a transformação de memes da internet, fanarts de personagens marcantes da cultura pop e universo dos jogos em arte digital de alto engajamento.
+      <p style="color: var(--texto-claro); font-size: 17px; font-weight: 500; text-align: justify;">
+        Eae, beleza? Eu sou o Gabriel Franzen, o artista por trás do perfil Franzen Art! Crio ilustrações digitais focadas em transformar os memes mais famosos da internet, personagens da cultura pop e ideias malucas em arte de alta qualidade. Minha missão é misturar criatividade e internet culture para produzir artes marcantes e de alto engajamento.
       </p>
     </div>
   </section>
 
   <section>
-    <h2><i class="fa-solid fa-palette" style="color: var(--cor-primaria);"></i> Portfólio</h2>
+    <h2><i class="fa-solid fa-fire" style="color: var(--cor-secundaria);"></i> Portfólio</h2>
     <div class="gallery">
       <div class="gallery-item" onclick="openLightbox(this)">
-        <img src="imagem1.jpg" alt="Fanart / Meme / Character">
+        <img src="imagem1.jpg" alt="Ilustração digital de meme feita por Gabriel Franzen Art">
         <span>Fanart / Meme / Character</span>
       </div>
       <div class="gallery-item" onclick="openLightbox(this)">
-        <img src="imagem2.jpg" alt="Fanart / Meme / Character">
+        <img src="imagem2.jpg" alt="Ilustração digital de personagem de jogos por Gabriel Franzen Art">
         <span>Fanart / Meme / Character</span>
       </div>
       <div class="gallery-item" onclick="openLightbox(this)">
-        <img src="imagem3.jpg" alt="Fanart / Meme / Character">
+        <img src="imagem3.jpg" alt="Cultura pop e ilustrações digitais por Gabriel Franzen Art">
         <span>Fanart / Meme / Character</span>
       </div>
       <div class="gallery-item" onclick="openLightbox(this)">
-        <img src="imagem4.jpg" alt="Fanart / Meme / Character">
+        <img src="imagem4.jpg" alt="Desenho digital independente por Gabriel Franzen Art">
         <span>Fanart / Meme / Character</span>
       </div>
     </div>
   </section>
 
   <section>
-    <h2><i class="fa-solid fa-bolt" style="color: var(--cor-primaria);"></i> Identidade Artística</h2>
+    <h2><i class="fa-solid fa-wand-magic-sparkles" style="color: var(--cor-secundaria);"></i> Identidade Artística</h2>
     <div class="card">
-      <p style="color: var(--texto-escuro);">
-        Uma convergência experimental entre arte digital contemporânea e internet culture. Produção baseada em conteúdo ágil e dinâmico, focado na consistência, evolução expressiva contínua e conexão direta com comunidades digitais.
+      <p style="color: var(--texto-escuro); font-size: 15px;">
+        Uma convergência puramente experimental entre o design digital moderno e a agilidade da internet culture. Cada criação artística foca em consistência, evolução conceitual contínua e na estruturação de narrativas curtas e virais feitas sob medida para impulsionar comunidades digitais engajadas.
       </p>
     </div>
   </section>
 
   <section>
-    <h2><i class="fa-solid fa-link" style="color: var(--cor-primaria);"></i> Redes Sociais</h2>
+    <h2><i class="fa-solid fa-share-nodes" style="color: var(--cor-secundaria);"></i> Redes Sociais</h2>
     <div class="card">
       <div class="social-grid">
         <a href="https://www.instagram.com/franzen__art?igsh=MWNpczVwb2EzODViYw==" target="_blank" class="social-btn btn-instagram">
@@ -272,8 +356,8 @@
   </section>
 
   <div class="lightbox" id="lightbox" onclick="closeLightbox()">
-    <button class="lightbox-close">&times;</button>
-    <img id="lightbox-img" src="" alt="Ampliação de Arte">
+    <button class="lightbox-close" aria-label="Fechar visualizador">&times;</button>
+    <img id="lightbox-img" src="" alt="Ampliação da Ilustração Digital">
   </div>
 
   <footer>
@@ -296,5 +380,4 @@
   </script>
 
 </body>
-  </html>
-  
+</html>
