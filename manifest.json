@@ -1,0 +1,19 @@
+{
+  "name": "FranzenArt",
+  "short_name": "FranzenArt",
+  "description": "Portfólio de desenhos tradicionais e manuais por Gabriel Franzen.",
+  "start_url": "/franzen-art/",
+  "display": "standalone",
+  "background_color": "#040408",
+  "theme_color": "#0077ff",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "favicon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
+
