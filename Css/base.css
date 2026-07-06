@@ -7,8 +7,29 @@
   --texto-escuro: #90a4ae;
   --borda-glow: rgba(0, 119, 255, 0.15);
 }
-* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
-html { scroll-behavior: smooth; }
-body { font-family: system-ui, -apple-system, sans-serif; background: var(--bg-principal); color: var(--texto-claro); line-height: 1.6; overflow-x: hidden; }
-.icon { display: inline-block; width: 1.25rem; height: 1.25rem; vertical-align: middle; }
 
+* { 
+  box-sizing: border-box; 
+  margin: 0; 
+  padding: 0; 
+  -webkit-tap-highlight-color: transparent; 
+}
+
+html { 
+  scroll-behavior: smooth; 
+}
+
+body { 
+  font-family: system-ui, -apple-system, sans-serif; 
+  background: var(--bg-principal); 
+  color: var(--texto-claro); 
+  line-height: 1.6; 
+  overflow-x: hidden; 
+}
+
+.icon { 
+  display: inline-block; 
+  width: 1.25rem; 
+  height: 1.25rem; 
+  vertical-align: middle; 
+}
