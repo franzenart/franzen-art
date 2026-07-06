@@ -50,6 +50,7 @@ export const LightboxManager = (() => {
 
   const render = () => {
     const item = itens[atual];
+    if (!item) return;
     const originalImg = item.querySelector('img');
     DOM.img.src = originalImg.src;
     DOM.img.alt = originalImg.alt;
@@ -96,7 +97,11 @@ export const LightboxManager = (() => {
       } else if (!isZoomed) {
         const diffX = e.changedTouches[0].clientX - touchStartX;
         if (Math.abs(diffX) > CONFIG.SWIPE_THRESHOLD) {
-          diffX > 0 ? ant() : prox();
+          if (diffX > 0) {
+            ant();
+          } else {
+            prox();
+          }
         }
       }
       lastTap = now;
@@ -117,4 +122,3 @@ export const LightboxManager = (() => {
 
   return { init };
 })();
-    
