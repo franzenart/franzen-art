@@ -41,4 +41,3 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('scroll', debounce(checkScroll, 15));
   checkScroll();
 });
-
