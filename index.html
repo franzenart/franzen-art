@@ -6,8 +6,22 @@
   <link rel="canonical" href="https://franzenart.github.io/franzen-art/">
   
   <title>FranzenArt | Gabriel Franzen — Portfólio de Desenhos Tradicionais</title>
-  <meta name="description" content="Conheça FranzenArt, o portfólio oficial de Gabriel Franzen. Desenhos de memes, anime e realismo feitos à mão.">
+  <meta name="description" content="Portfólio oficial de Gabriel Franzen (FranzenArt). Explore desenhos tradicionais feitos 100% à mão, cobrindo a cultura pop, animes, memes clássicos da internet e artes realistas.">
+  <meta name="keywords" content="Gabriel Franzen, FranzenArt, desenho tradicional, arte em papel, desenho de anime, desenho de meme, ilustrador brasileiro, portfólio de arte">
+  <meta name="author" content="Gabriel Franzen">
   <meta name="theme-color" content="#040408">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://franzenart.github.io/franzen-art/">
+  <meta property="og:title" content="FranzenArt | Gabriel Franzen — Portfólio de Desenhos Tradicionais">
+  <meta property="og:description" content="Explore desenhos tradicionais feitos 100% à mão, cobrindo animes, memes e artes realistas por Gabriel Franzen.">
+  <meta property="og:image" content="portfolio/imagem1.webp">
+
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://franzenart.github.io/franzen-art/">
+  <meta property="twitter:title" content="FranzenArt | Gabriel Franzen — Portfólio de Desenhos Tradicionais">
+  <meta property="twitter:description" content="Explore desenhos tradicionais feitos 100% à mão, cobrindo animes, memes e artes realistas por Gabriel Franzen.">
+  <meta property="twitter:image" content="portfolio/imagem1.webp">
 
   <link rel="icon" href="favicon.png" type="image/png">
   <link rel="manifest" href="manifest.json">
@@ -28,10 +42,12 @@
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Gabriel Franzen",
+    "alternateName": "FranzenArt",
     "url": "https://franzenart.github.io/franzen-art/",
-    "image": "https://franzenart.github.io/franzen-art/portfolio/imagem1.webp",
-    "jobTitle": "Artista Tradicional",
-    "description": "Artista especializado em desenhos manuais de memes, anime e cultura pop."
+    "image": "portfolio/imagem1.webp",
+    "jobTitle": "Artista Tradicional e Ilustrador",
+    "description": "Artista especializado em desenhos manuais e tradicionais, unindo técnicas de grafite, nanquim e marcadores para recriar animes, memes e realismo.",
+    "knowsAbout": ["Desenho Tradicional", "Ilustração", "Arte de Anime", "Arte de Memes", "Desenho Artístico"]
   }
   </script>
 </head>
@@ -42,17 +58,17 @@
   <div class="top-bar">
     <button id="btn-theme" class="nav-bar-btn" aria-label="Mudar o tema visual">
       <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"/></svg>
-      Alterar Visual
+      <span>Alterar Visual</span>
     </button>
     <button id="btn-copy-link" class="nav-bar-btn" aria-label="Copiar link do portfólio">
       <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
-      Copiar Link
+      <span>Copiar Link</span>
     </button>
   </div>
 
   <header class="hero">
     <h1>Gabriel Franzen</h1>
-    <p class="hero-tagline">Transformando memes, personagens e ideias da internet em desenhos únicos.</p>
+    <p class="hero-tagline">Transformando memes, personagens e ideias da cultura pop em desenhos manuais únicos.</p>
     
     <div class="hero-actions">
       <a href="#portfolio-section" class="btn-primary">Ver Portfólio</a>
@@ -64,10 +80,18 @@
   </header>
 
   <main>
+    <section class="about-section scroll-reveal" id="about-section" aria-labelledby="about-title">
+      <h2 id="about-title">Sobre o Artista</h2>
+      <div class="about-content">
+        <p>Sou o <strong>Gabriel Franzen</strong>, a mente e as mãos por trás do <strong>FranzenArt</strong>. Desde 2018, me dedico à arte tradicional, transformando o intangível do ambiente digital — como memes históricos e personagens marcantes de animes — em peças físicas detalhadas feitas inteiramente no papel.</p>
+        <p>Minha produção foca no capricho técnico, utilizando papéis de alta gramatura, canetas nanquim e marcadores para dar vida nova a ícones da internet e estudos realistas.</p>
+      </div>
+    </section>
+
     <section class="stats-section scroll-reveal" aria-label="Estatísticas do Projeto">
       <div class="stats-grid">
         <div class="stat-card"><h3>Desde</h3><p class="stat-number">2018</p></div>
-        <div class="stat-card"><h3>Produção</h3><p class="stat-number">+300 arts</p></div>
+        <div class="stat-card"><h3>Produção</h3><p class="stat-number">+300 artes</p></div>
         <div class="stat-card"><h3>Técnica</h3><p class="stat-number">100% Manual</p></div>
       </div>
     </section>
@@ -85,7 +109,7 @@
         <button class="gallery-item memes" type="button" aria-haspopup="dialog" aria-expanded="false" data-index="0" aria-label="Ampliar Desenho de meme da internet">
           <picture>
             <source srcset="portfolio/imagem1.webp" type="image/webp">
-            <img src="portfolio/imagem1.webp" alt="Desenho de meme por Gabriel Franzen" fetchpriority="high" decoding="async" width="800" height="950">
+            <img src="portfolio/imagem1.webp" alt="Desenho de meme clássico feito à mão por Gabriel Franzen" fetchpriority="high" decoding="async" width="800" height="950">
           </picture>
           <span class="caption">Meme Clássico (2026)</span>
         </button>
@@ -93,7 +117,7 @@
         <button class="gallery-item anime" type="button" aria-haspopup="dialog" aria-expanded="false" data-index="1" aria-label="Ampliar Ilustração de anime">
           <picture>
             <source srcset="portfolio/imagem2.webp" type="image/webp">
-            <img src="portfolio/imagem2.webp" alt="Ilustração de anime por Gabriel Franzen" loading="lazy" decoding="async" width="800" height="950">
+            <img src="portfolio/imagem2.webp" alt="Ilustração do Goku Instinto Superior feito à mão por Gabriel Franzen" loading="lazy" decoding="async" width="800" height="950">
           </picture>
           <span class="caption">Goku Instinto Superior</span>
         </button>
@@ -104,8 +128,12 @@
       <h2 id="faq-title">Perguntas Frequentes</h2>
       <div class="faq-container">
         <details>
-          <summary>Quais materiais você utiliza?</summary>
-          <p>Papéis de alta gramatura (200g/m² a 300g/m²), lápis graduados de grafite, nanquim e marcadores profissionais.</p>
+          <summary>Quais materiais você utiliza nos desenhos?</summary>
+          <p>Utilizo papéis profissionais com gramaturas que variam de 200g/m² a 300g/m² para suportar camadas de tinta. Na finalização e pintura, utilizo lápis graduados de grafite, canetas nanquim descartáveis e marcadores artísticos profissionais à base de álcool.</p>
+        </details>
+        <details>
+          <summary>Como posso encomendar uma arte exclusiva?</summary>
+          <p>Você pode entrar em contato diretamente pelas minhas redes sociais oficiais ou canais expostos para consultar a disponibilidade da minha agenda de encomendas personalizadas (commissions).</p>
         </details>
       </div>
     </section>
@@ -139,10 +167,9 @@
   <div id="toast-container" aria-live="assertive" aria-atomic="true"></div>
 
   <footer>
-    <p>© 2026 FranzenArt — Gabriel Franzen. 100% Estático e Seguro.</p>
+    <p>© 2026 FranzenArt — Gabriel Franzen. Todos os direitos reservados. 100% Estático e Seguro.</p>
   </footer>
 
   <script src="js/script.js" type="module"></script>
 </body>
-  </html>
-  
+</html>
