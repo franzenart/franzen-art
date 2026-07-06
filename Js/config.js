@@ -5,4 +5,3 @@ export const CONFIG = {
   SWIPE_THRESHOLD: 60,
   TOAST_DURATION: 3000
 };
-
