@@ -23,6 +23,8 @@ export const ToastManager = (() => {
     const toast = document.createElement('div');
     toast.className = 'toast';
     toast.textContent = msg;
+    
+    // Sobrescreve a animação de forma isolada
     toast.style.animation = `toastAnimation ${CONFIG.TOAST_DURATION}ms forwards`;
 
     container.appendChild(toast);
@@ -35,4 +37,3 @@ export const ToastManager = (() => {
 
   return { show };
 })();
-
