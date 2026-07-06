@@ -16,4 +16,3 @@ export const ClipboardManager = (() => {
   };
   return { init };
 })();
-
