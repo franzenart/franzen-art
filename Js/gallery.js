@@ -30,4 +30,3 @@ export const GalleryManager = (() => {
 
   return { init, filtrar };
 })();
-
