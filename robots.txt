@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://franzenart.github.io/franzen-art/sitemap.xml
+
