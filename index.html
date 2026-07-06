@@ -3,361 +3,146 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="canonical" href="https://franzenart.github.io/franzen-art/">
   
-  <title>Gabriel Franzen Art | Portfólio de Arte Digital e Memes</title>
-  <meta name="description" content="Portfólio oficial de Gabriel Franzen (FranzenArt). Ilustrações digitais criativas, fanarts de cultura pop, jogos e transformação de memes em arte de alto engajamento.">
-  <meta name="keywords" content="Gabriel Franzen, Franzen Art, FranzenArt, desenho digital, ilustrador, criador de conteúdo, memes, fanart, arte digital">
-  <meta name="robots" content="index, follow">
-  <meta name="author" content="FranzenArt">
+  <title>FranzenArt | Gabriel Franzen — Portfólio de Desenhos Tradicionais</title>
+  <meta name="description" content="Conheça FranzenArt, o portfólio oficial de Gabriel Franzen. Desenhos de memes, anime e realismo feitos à mão.">
+  <meta name="theme-color" content="#040408">
 
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Gabriel Franzen Art | Portfólio Oficial">
-  <meta property="og:description" content="Arte digital, memes virais e cultura da internet por FranzenArt.">
-  <meta property="og:url" content="https://franzenart.github.io/franzen-art/">
-  <meta property="og:image" content="imagem1.jpg">
+  <link rel="icon" href="favicon.png" type="image/png">
+  <link rel="manifest" href="manifest.json">
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/gallery.css">
+  <link rel="stylesheet" href="css/lightbox.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
 
-  <style>
-    /* --- NOVA CONFIGURAÇÃO DE CORES ARTÍSTICAS (AZUL, PRETO & BRANCO) --- */
-    :root {
-      --bg-principal: #040408;
-      --bg-card: rgba(14, 20, 32, 0.6); /* Efeito Vidro Escuro */
-      --cor-primaria: #0077ff; /* Azul Elétrico */
-      --cor-secundaria: #00f2ff; /* Ciano/Azul Claro */
-      --texto-claro: #ffffff;
-      --texto-escuro: #90a4ae;
-      --borda-glow: rgba(0, 119, 255, 0.2);
-    }
+  <script type="modulepreload" href="js/script.js"></script>
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-      background: var(--bg-principal);
-      color: var(--texto-claro);
-      overflow-x: hidden;
-      line-height: 1.6;
-      /* Background artístico simulando malha digital com luz azul de fundo */
-      background-image: 
-        radial-gradient(circle at 50% 15%, rgba(0, 119, 255, 0.12) 0%, transparent 50%),
-        linear-gradient(rgba(255,255,255,0.01) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.01) 1px, transparent 1px);
-      background-size: 100% 100%, 40px 40px, 40px 40px;
-    }
-
-    /* Header Compacto e Sofisticado */
-    header {
-      text-align: center;
-      padding: 90px 20px 50px 20px;
-      background: linear-gradient(180deg, rgba(10, 18, 32, 0.5) 0%, var(--bg-principal) 100%);
-      border-bottom: 1px solid rgba(0, 119, 255, 0.15);
-    }
-
-    header h1 {
-      font-size: 52px;
-      font-weight: 900;
-      letter-spacing: -1px;
-      text-transform: uppercase;
-      background: linear-gradient(45deg, var(--texto-claro) 40%, var(--cor-secundaria));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      filter: drop-shadow(0 0 10px rgba(0, 119, 255, 0.2));
-    }
-
-    header p {
-      color: var(--texto-escuro);
-      margin-top: 10px;
-      font-size: 18px;
-      font-weight: 500;
-      letter-spacing: 0.5px;
-    }
-
-    .badge {
-      display: inline-block;
-      background: rgba(0, 119, 255, 0.1);
-      color: #a6d5ff;
-      padding: 5px 14px;
-      border-radius: 30px;
-      font-size: 12px;
-      font-weight: 700;
-      margin-top: 15px;
-      border: 1px solid rgba(0, 119, 255, 0.25);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    /* Hub de Redes Sociais no Cabeçalho - Integrado e Elegante */
-    .header-socials {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      margin-top: 25px;
-    }
-
-    .social-icon-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      color: var(--texto-claro);
-      text-decoration: none;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      font-size: 18px;
-      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    }
-
-    .social-icon-btn:hover {
-      background: rgba(0, 119, 255, 0.15);
-      border-color: var(--cor-secundaria);
-      color: var(--cor-secundaria);
-      transform: translateY(-3px);
-      box-shadow: 0 5px 15px rgba(0, 242, 255, 0.2);
-    }
-
-    section {
-      max-width: 950px;
-      margin: auto;
-      padding: 40px 20px;
-    }
-
-    h2 {
-      font-size: 24px;
-      font-weight: 700;
-      margin-bottom: 25px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      color: var(--texto-claro);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    h2::after {
-      content: '';
-      flex-grow: 1;
-      height: 1px;
-      background: linear-gradient(90deg, var(--cor-primaria), transparent);
-    }
-
-    /* Cards Estilo Estúdio Digital */
-    .card {
-      background: var(--bg-card);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      padding: 30px;
-      border-radius: 16px;
-      border: 1px solid var(--borda-glow);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-      transition: border-color 0.4s ease, box-shadow 0.4s ease;
-    }
-
-    .card:hover {
-      border-color: rgba(0, 242, 255, 0.3);
-      box-shadow: 0 15px 35px rgba(0, 119, 255, 0.15);
-    }
-
-    /* Galeria de Artes */
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 25px;
-    }
-
-    .gallery-item {
-      background: #0b111e;
-      border-radius: 14px;
-      overflow: hidden;
-      border: 1px solid var(--borda-glow);
-      cursor: pointer;
-      position: relative;
-      transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease, border-color 0.4s ease;
-    }
-
-    .gallery-item:hover {
-      transform: translateY(-4px);
-      border-color: var(--cor-secundaria);
-      box-shadow: 0 12px 25px rgba(0, 119, 255, 0.2);
-    }
-
-    .gallery-item img {
-      width: 100%;
-      height: 260px;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.4s ease, filter 0.4s ease;
-    }
-
-    .gallery-item:hover img {
-      transform: scale(1.02);
-      filter: brightness(1.05);
-    }
-
-    .gallery-item span {
-      display: block;
-      padding: 15px;
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--texto-claro);
-      text-align: center;
-      background: #070b14;
-      border-top: 1px solid rgba(0, 119, 255, 0.1);
-      letter-spacing: 0.5px;
-    }
-
-    /* Janela do Visualizador de Imagens (Lightbox) */
-    .lightbox {
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(2, 3, 6, 0.98);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.4s ease;
-      z-index: 9999;
-      padding: 20px;
-    }
-
-    .lightbox.active {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    .lightbox img {
-      max-width: 100%;
-      max-height: 85vh;
-      border-radius: 12px;
-      box-shadow: 0 0 40px rgba(0, 119, 255, 0.3);
-      border: 1px solid rgba(0, 242, 255, 0.2);
-      transform: scale(0.95);
-      transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-    }
-
-    .lightbox.active img {
-      transform: scale(1);
-    }
-
-    .lightbox-close {
-      position: absolute;
-      top: 25px;
-      right: 25px;
-      background: none;
-      border: none;
-      color: var(--texto-claro);
-      font-size: 40px;
-      cursor: pointer;
-      opacity: 0.6;
-      transition: opacity 0.2s ease;
-    }
-
-    .lightbox-close:hover {
-      opacity: 1;
-      color: var(--cor-secundaria);
-    }
-
-    footer {
-      text-align: center;
-      padding: 50px 20px;
-      color: #3f51b5;
-      font-size: 13px;
-      border-top: 1px solid rgba(0, 119, 255, 0.1);
-      letter-spacing: 1px;
-    }
-  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Gabriel Franzen",
+    "url": "https://franzenart.github.io/franzen-art/",
+    "image": "https://franzenart.github.io/franzen-art/images/capa.webp",
+    "jobTitle": "Artista Tradicional",
+    "description": "Artista especializado em desenhos manuais de memes, anime e realismo."
+  }
+  </script>
 </head>
+<body class="tema-artistico">
 
-<body>
+  <a href="#portfolio-section" class="skip-to-content">Pular para o Portfólio</a>
 
-  <header>
-    <h1>FranzenArt</h1>
-    <p>Digital Artist & Creator</p>
-    <span class="badge">Art, memes and internet culture</span>
+  <div class="top-bar">
+    <button id="btn-theme" class="nav-bar-btn" aria-label="Mudar o tema visual">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"/></svg>
+      Alterar Visual
+    </button>
+    <button id="btn-copy-link" class="nav-bar-btn" aria-label="Copiar link do portfólio">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+      Copiar Link
+    </button>
+  </div>
+
+  <header class="hero">
+    <h1>Gabriel Franzen</h1>
+    <p class="hero-tagline">Transformando memes, personagens e ideias da internet em desenhos únicos.</p>
     
-    <div class="header-socials">
-      <a href="https://www.instagram.com/franzen__art?igsh=MWNpczVwb2EzODViYw==" target="_blank" class="social-icon-btn" title="Instagram">
-        <i class="fa-brands fa-instagram"></i>
-      </a>
-      <a href="https://www.tiktok.com/@franzen_art?_r=1&_t=ZS-97mbXvE90mm" target="_blank" class="social-icon-btn" title="TikTok">
-        <i class="fa-brands fa-tiktok"></i>
-      </a>
-      <a href="https://youtube.com/@franzenart?si=s8d_4cuUpZ2AVm_a" target="_blank" class="social-icon-btn" title="YouTube">
-        <i class="fa-brands fa-youtube"></i>
-      </a>
+    <div class="hero-actions">
+      <a href="#portfolio-section" class="btn-primary">Ver Portfólio</a>
+    </div>
+
+    <div class="scroll-indicator" aria-hidden="true">
+      <span>↓ Role para explorar</span>
     </div>
   </header>
 
-  <section>
-    <h2><i class="fa-solid fa-face-smile-wink" style="color: var(--cor-primaria);"></i> Quem é o Artista</h2>
-    <div class="card">
-      <p style="color: var(--texto-claro); font-size: 16px; font-weight: 500; text-align: justify;">
-        Eae, beleza? Eu sou o Gabriel Franzen, o artista por trás do perfil Franzen Art! Crio ilustrações digitais focadas em transformar os memes mais famosos da internet, personagens da cultura pop e ideias malucas em arte de alta qualidade. Minha missão é misturar criatividade e internet culture para produzir artes marcantes e de alto engajamento.
-      </p>
-    </div>
-  </section>
+  <main>
+    <section class="stats-section scroll-reveal" aria-label="Estatísticas do Projeto">
+      <div class="stats-grid">
+        <div class="stat-card"><h3>Desde</h3><p class="stat-number">2018</p></div>
+        <div class="stat-card"><h3>Produção</h3><p class="stat-number">+300 arts</p></div>
+        <div class="stat-card"><h3>Técnica</h3><p class="stat-number">100% Manual</p></div>
+      </div>
+    </section>
 
-  <section>
-    <h2><i class="fa-solid fa-palette" style="color: var(--cor-primaria);"></i> Portfólio</h2>
-    <div class="gallery">
-      <div class="gallery-item" onclick="openLightbox(this)">
-        <img src="imagem1.jpg" alt="Ilustração digital de meme feita por Gabriel Franzen Art">
-        <span>Fanart / Meme / Character</span>
+    <section id="portfolio-section" class="scroll-reveal" aria-labelledby="portfolio-title">
+      <h2 id="portfolio-title">Galeria de Arte</h2>
+      
+      <div class="filter-container" id="filter-container">
+        <button class="filter-btn active" data-category="tudo">Tudo</button>
+        <button class="filter-btn" data-category="memes">Memes</button>
+        <button class="filter-btn" data-category="anime">Anime</button>
       </div>
-      <div class="gallery-item" onclick="openLightbox(this)">
-        <img src="imagem2.jpg" alt="Ilustração digital de personagem de jogos por Gabriel Franzen Art">
-        <span>Fanart / Meme / Character</span>
+
+      <div class="gallery" id="gallery" aria-live="polite">
+        <button class="gallery-item memes" type="button" aria-haspopup="dialog" aria-expanded="false" data-index="0" aria-label="Ampliar Desenho de meme da internet">
+          <picture>
+            <source srcset="portfolio/imagem1.webp" type="image/webp">
+            <img src="portfolio/imagem1.webp" alt="Desenho de meme por Gabriel Franzen" fetchpriority="high" decoding="async" width="800" height="950">
+          </picture>
+          <span class="caption">Meme Clássico (2026)</span>
+        </button>
+
+        <button class="gallery-item anime" type="button" aria-haspopup="dialog" aria-expanded="false" data-index="1" aria-label="Ampliar Ilustração de anime">
+          <picture>
+            <source srcset="portfolio/imagem2.webp" type="image/webp">
+            <img src="portfolio/imagem2.webp" alt="Ilustração de anime por Gabriel Franzen" loading="lazy" decoding="async" width="800" height="950">
+          </picture>
+          <span class="caption">Goku Instinto Superior</span>
+        </button>
       </div>
-      <div class="gallery-item" onclick="openLightbox(this)">
-        <img src="imagem3.jpg" alt="Cultura pop e ilustrações digitais por Gabriel Franzen Art">
-        <span>Fanart / Meme / Character</span>
+    </section>
+
+    <section class="faq-section scroll-reveal" aria-labelledby="faq-title">
+      <h2 id="faq-title">Perguntas Frequentes</h2>
+      <div class="faq-container">
+        <details>
+          <summary>Quais materiais você utiliza?</summary>
+          <p>Papéis de alta gramatura (200g/m² a 300g/m²), lápis graduados de grafite, nanquim e marcadores profissionais.</p>
+        </details>
       </div>
-      <div class="gallery-item" onclick="openLightbox(this)">
-        <img src="imagem4.jpg" alt="Desenho digital independente por Gabriel Franzen Art">
-        <span>Fanart / Meme / Character</span>
+    </section>
+  </main>
+
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Visualizador de arte ampliada">
+    <button class="lightbox-nav lightbox-prev" id="lightbox-prev" aria-label="Imagem anterior">
+      <svg viewBox="0 0 24 24" class="icon"><path fill="currentColor" d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+    </button>
+    
+    <div class="lightbox-content" id="lightbox-content">
+      <div class="lightbox-wrapper" id="lightbox-wrapper">
+        <img id="lightbox-img" src="" alt="" decoding="async">
+      </div>
+      <div class="lightbox-meta">
+        <span id="lightbox-counter" class="lightbox-counter"></span>
+        <span id="lightbox-caption" class="lightbox-caption"></span>
       </div>
     </div>
-  </section>
 
-  <section>
-    <h2><i class="fa-solid fa-wand-magic-sparkles" style="color: var(--cor-primaria);"></i> Identidade Artística</h2>
-    <div class="card">
-      <p style="color: var(--texto-escuro); font-size: 15px;">
-        Uma convergência puramente experimental entre o design digital moderno e a agilidade da internet culture. Cada criação artística foca em consistência, evolução conceitual contínua e na estruturação de narrativas curtas e virais feitas sob medida para impulsionar comunidades digitais engajadas.
-      </p>
-    </div>
-  </section>
-
-  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
-    <button class="lightbox-close" aria-label="Fechar visualizador">&times;</button>
-    <img id="lightbox-img" src="" alt="Ampliação da Ilustração Digital">
+    <button class="lightbox-nav lightbox-next" id="lightbox-next" aria-label="Próxima imagem">
+      <svg viewBox="0 0 24 24" class="icon"><path fill="currentColor" d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+    </button>
+    <button class="lightbox-close" id="lightbox-close" aria-label="Fechar visualizador">&times;</button>
   </div>
 
+  <button id="btn-home" class="back-to-top-btn" aria-label="Voltar para o topo" aria-hidden="true">
+    <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"/></svg>
+  </button>
+
+  <div id="toast-container" aria-live="assertive" aria-atomic="true"></div>
+
   <footer>
-    © 2026 FranzenArt — Todos os direitos reservados
+    <p>© 2026 FranzenArt — Gabriel Franzen. 100% Estático e Seguro.</p>
   </footer>
 
-  <script>
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
-
-    function openLightbox(element) {
-      const imgSrc = element.querySelector('img').src;
-      lightboxImg.src = imgSrc;
-      lightbox.classList.add('active');
-    }
-
-    function closeLightbox() {
-      lightbox.classList.remove('active');
-    }
-  </script>
-
+  <script src="js/script.js" type="module"></script>
 </body>
-</html>
+    </html>
+    
