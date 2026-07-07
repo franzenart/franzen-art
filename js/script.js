@@ -1,92 +1,108 @@
 /**
- * Core Modular da Experiência FranzenArt 2026
- * Estritamente em conformidade com segurança estática e performance pura.
+ * Arquitetura de Controle do Sketchbook Digital FranzenArt
+ * JavaScript vanila limpo, focado em segurança estática e UX fluida.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  // --- 1. CURSOR SEGUIDOR EM FORMA DE LÁPIS ---
+  // --- 1. SEGUIDOR DE CURSOR DE PRECISÃO (✏️) ---
   const pencilCursor = document.getElementById('custom-pencil-cursor');
-  document.addEventListener('mousemove', (e) => {
-    if (pencilCursor) {
+  if (pencilCursor) {
+    document.addEventListener('mousemove', (e) => {
       pencilCursor.style.left = e.clientX + 'px';
       pencilCursor.style.top = e.clientY + 'px';
-    }
-  });
+    });
+  }
 
-  // --- 2. CONTROLE DO MENU LATERAL MOBILE ---
+  // --- 2. GESTÃO DO MENU LATERAL E OVERLAY ---
   const toggleBtn = document.getElementById('menu-toggle-btn');
   const closeSidebarBtn = document.getElementById('close-sidebar-btn');
   const sidebar = document.getElementById('mobile-sidebar');
+  const overlay = document.getElementById('sidebar-overlay');
 
-  toggleBtn?.addEventListener('click', () => {
+  const openMenu = () => {
     sidebar?.classList.add('active');
+    overlay?.classList.add('active');
     sidebar?.setAttribute('aria-hidden', 'false');
-  });
+  };
 
-  const closeSidebar = () => {
+  const closeMenu = () => {
     sidebar?.classList.remove('active');
+    overlay?.classList.remove('active');
     sidebar?.setAttribute('aria-hidden', 'true');
   };
 
-  closeSidebarBtn?.addEventListener('click', closeSidebar);
+  toggleBtn?.addEventListener('click', openMenu);
+  closeSidebarBtn?.addEventListener('click', closeMenu);
+  overlay?.addEventListener('click', closeMenu);
   document.querySelectorAll('.sidebar-link').forEach(link => {
-    link.addEventListener('click', closeSidebar);
+    link.addEventListener('click', closeMenu);
   });
 
-  // --- 3. PROGRESSO CINEMÁTICO DE ROLAGEM E REVEAL ---
+  // --- 3. CONTROLE DE IMAGENS E PLACEMENT PREVENTIVO CONTRA QUEBRAS ---
+  const galleryImages = document.querySelectorAll('.gallery-img');
+  galleryImages.forEach(img => {
+    if (img.complete) {
+      img.classList.add('loaded');
+      img.previousElementSibling?.remove();
+    } else {
+      img.addEventListener('load', () => {
+        img.classList.add('loaded');
+        img.previousElementSibling?.remove();
+      });
+      img.addEventListener('error', () => {
+        if (img.previousElementSibling) {
+          img.previousElementSibling.textContent = "Projeto em desenvolvimento";
+        }
+      });
+    }
+  });
+
+  // --- 4. ENGINE DE ROLAGEM, PROGRESSO E SEÇÃO ATIVA ---
   const scrollProgress = document.getElementById('scroll-progress');
   const revealElements = document.querySelectorAll('.reveal-on-scroll');
   const btnHome = document.getElementById('btn-home');
+  const navLinks = document.querySelectorAll('.menu-link');
+  const sections = document.querySelectorAll('header, section');
 
-  const onScrollHandler = () => {
-    // Barra de leitura superior
+  const monitorScroll = () => {
     const winScroll = window.scrollY;
     const height = document.documentElement.scrollHeight - window.innerHeight;
+    
     if (height > 0 && scrollProgress) {
-      const scrolled = (winScroll / height) * 100;
-      scrollProgress.style.width = scrolled + '%';
+      scrollProgress.style.width = (winScroll / height) * 100 + '%';
     }
 
-    // Surgimento de blocos na tela
     revealElements.forEach(el => {
-      const elTop = el.getBoundingClientRect().top;
-      if (elTop < window.innerHeight * 0.88) {
+      if (el.getBoundingClientRect().top < window.innerHeight * 0.9) {
         el.classList.add('visible');
       }
     });
 
-    // Botão de retornar ao topo
-    if (winScroll > 500) {
-      btnHome?.classList.add('visible');
-    } else {
-      btnHome?.classList.remove('visible');
-    }
-  };
+    if (winScroll > 450) { btnHome?.classList.add('visible'); } else { btnHome?.classList.remove('visible'); }
 
-  window.addEventListener('scroll', onScrollHandler, { passive: true });
-  onScrollHandler(); // Disparo inicial preventivo
+    let activeId = "";
+    sections.forEach(sec => {
+      const top = sec.offsetTop - 140;
+      if (winScroll >= top) {
+        activeId = sec.getAttribute('id') || "";
+      }
+    });
 
-  // --- 4. ENGINE DE BUSCA E ABAS SEM QUEBRA ---
-  const tabButtons = document.querySelectorAll('.tab-btn');
-  const artCards = document.querySelectorAll('.art-card');
-  const searchBar = document.getElementById('gallery-search');
-  let activeCategory = 'all';
-
-  const runGalleryFilters = () => {
-    const filterQuery = searchBar?.value.toLowerCase().trim() || "";
-
-    artCards.forEach(card => {
-      const isCorrectCategory = activeCategory === 'all' || card.dataset.category === activeCategory;
-      const isSearchMatch = card.dataset.title.includes(filterQuery);
-
-      if (isCorrectCategory && isSearchMatch) {
-        card.style.display = "block";
-      } else {
-        card.style.display = "none";
+    navLinks.forEach(link => {
+      link.classList.remove('active-nav');
+      if (link.getAttribute('href') === `#${activeId}`) {
+        link.classList.add('active-nav');
       }
     });
   };
+
+  window.addEventListener('scroll', monitorScroll, { passive: true });
+  monitorScroll();
+
+  // --- 5. CATEGORIZAÇÃO DE TABS ---
+  const tabButtons = document.querySelectorAll('.tab-btn');
+  const artCards = document.querySelectorAll('.art-card');
 
   tabButtons.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -94,129 +110,136 @@ document.addEventListener('DOMContentLoaded', () => {
       btn.classList.add('active');
       btn.setAttribute('aria-selected', 'true');
       
-      activeCategory = btn.dataset.target;
-      runGalleryFilters();
+      const target = btn.dataset.target;
+      artCards.forEach(card => {
+        card.style.display = (target === 'all' || card.dataset.category === target) ? "block" : "none";
+      });
     });
   });
 
-  searchBar?.addEventListener('input', runGalleryFilters);
-
-  // --- 5. CONTROLE DE FAVORITOS (LOCALSTORAGE SEGURO) ---
-  document.querySelectorAll('.btn-fav').forEach(favBtn => {
-    const favId = favBtn.dataset.favId;
-    
-    if (localStorage.getItem(`franzen_fav_${favId}`) === 'true') {
-      favBtn.classList.add('active');
-    }
-
-    favBtn.addEventListener('click', (e) => {
-      e.stopPropagation(); // Evita a abertura acidental do Lightbox
-      favBtn.classList.toggle('active');
-      const isSaved = favBtn.classList.contains('active');
-      localStorage.setItem(`franzen_fav_${favId}`, isSaved ? 'true' : 'false');
-      triggerToast(isSaved ? "Salvo no seu rolo de favoritos!" : "Removido dos favoritos.");
-    });
-  });
-
-  // --- 6. CICLO DE TEMAS DE PAPEL AVANÇADO ---
+  // --- 6. SWITCH DE APARÊNCIA LOCAL STORAGE (PROTEGIDO) ---
   const themeButton = document.getElementById('btn-theme');
-  const themeList = ['artistico', 'pb', 'papel'];
-  let activeThemeIndex = themeList.indexOf(document.body.getAttribute('data-theme') || 'artistico');
+  const themes = ['artistico', 'papel'];
+  let currentThemeIdx = themes.indexOf(document.body.getAttribute('data-theme') || 'artistico');
 
-  const savedTheme = localStorage.getItem('franzen_app_theme');
-  if (savedTheme && themeList.includes(savedTheme)) {
+  const savedTheme = localStorage.getItem('franzen_theme');
+  if (savedTheme && themes.includes(savedTheme)) {
     document.body.setAttribute('data-theme', savedTheme);
-    activeThemeIndex = themeList.indexOf(savedTheme);
+    currentThemeIdx = themes.indexOf(savedTheme);
   }
 
   themeButton?.addEventListener('click', () => {
-    activeThemeIndex = (activeThemeIndex + 1) % themeList.length;
-    const nextTheme = themeList[activeThemeIndex];
-    document.body.setAttribute('data-theme', nextTheme);
-    localStorage.setItem('franzen_app_theme', nextTheme);
-    triggerToast(`Textura alterada: Modo ${nextTheme.toUpperCase()}`);
+    currentThemeIdx = (currentThemeIdx + 1) % themes.length;
+    const selected = themes[currentThemeIdx];
+    document.body.setAttribute('data-theme', selected);
+    localStorage.setItem('franzen_theme', selected);
+    triggerToast(`Aparência alterada: Modo ${selected.toUpperCase()}`);
   });
 
-  // --- 7. NOTIFICAÇÕES TOAST INTEGRAIS ---
-  function triggerToast(text) {
-    const container = document.getElementById('toast-container');
-    if (!container) return;
-    container.innerHTML = '';
-    const toastBox = document.createElement('div');
-    toastBox.className = 'toast';
-    toastBox.textContent = text;
-    container.appendChild(toastBox);
-    setTimeout(() => { if (toastBox) toastBox.remove(); }, 2900);
+  // --- 7. EMISSOR DE TOAST SEGURO (ANTI-XSS) ---
+  function triggerToast(message) {
+    const box = document.getElementById('toast-container');
+    if (!box) return;
+    box.innerHTML = '';
+    const toast = document.createElement('div');
+    toast.className = 'toast';
+    toast.textContent = message; // Atribuição via textContent impede injeções
+    box.appendChild(toast);
+    setTimeout(() => { toast.remove(); }, 2500);
   }
 
-  // --- 8. LIGHTBOX DE ELITE COM ROTAÇÃO E CONTADOR ---
-  const lightboxElement = document.getElementById('artist-lightbox');
+  // --- 8. VISUALIZADOR LIGHTBOX COM ARQUITETURA FOCUS TRAP ---
+  const lightbox = document.getElementById('artist-lightbox');
   const lightboxImg = document.getElementById('lightbox-main-img');
   const lightboxCaption = document.getElementById('lightbox-main-caption');
   const lightboxCounter = document.getElementById('lightbox-main-counter');
-  
-  let operationalCards = [];
-  let lightboxTrackIndex = 0;
+  let filteredCards = [];
+  let currentIdx = 0;
+  let previousActiveElement = null;
 
-  const renderLightboxView = () => {
-    if (operationalCards.length === 0) return;
-    const activeCard = operationalCards[lightboxTrackIndex];
-    if (lightboxImg) lightboxImg.src = activeCard.dataset.full;
-    if (lightboxCaption) lightboxCaption.textContent = activeCard.dataset.caption;
-    if (lightboxCounter) lightboxCounter.textContent = `${lightboxTrackIndex + 1} de ${operationalCards.length}`;
+  const renderLightboxFrame = () => {
+    if (filteredCards.length === 0) return;
+    const currentCard = filteredCards[currentIdx];
+    
+    // Filtro estrito antes da inserção
+    const validatedSrc = currentCard.dataset.full;
+    const validatedCaption = currentCard.dataset.caption;
+
+    if (lightboxImg) lightboxImg.src = validatedSrc;
+    if (lightboxCaption) lightboxCaption.textContent = validatedCaption;
+    if (lightboxCounter) lightboxCounter.textContent = `${currentIdx + 1} de ${filteredCards.length}`;
   };
 
   document.addEventListener('click', (e) => {
-    const cardElement = e.target.closest('.art-card');
-    if (!cardElement) return;
+    const card = e.target.closest('.art-card');
+    if (!card) return;
 
-    operationalCards = Array.from(artCards).filter(c => c.style.display !== 'none');
-    lightboxTrackIndex = operationalCards.indexOf(cardElement);
+    previousActiveElement = document.activeElement;
+    filteredCards = Array.from(artCards).filter(c => c.style.display !== 'none');
+    currentIdx = filteredCards.indexOf(card);
 
-    if (lightboxTrackIndex !== -1 && lightboxElement) {
-      renderLightboxView();
-      lightboxElement.classList.add('active');
-      lightboxElement.setAttribute('aria-hidden', 'false');
+    if (currentIdx !== -1 && lightbox) {
+      renderLightboxFrame();
+      lightbox.classList.add('active');
+      lightbox.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
+      lightbox.focus();
     }
   });
 
-  const dismissLightbox = () => {
-    lightboxElement?.classList.remove('active');
-    lightboxElement?.setAttribute('aria-hidden', 'true');
+  const closeLightbox = () => {
+    lightbox?.classList.remove('active');
+    lightbox?.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
+    if (previousActiveElement) previousActiveElement.focus();
   };
 
-  document.getElementById('close-lightbox-btn')?.addEventListener('click', dismissLightbox);
+  document.getElementById('close-lightbox-btn')?.addEventListener('click', closeLightbox);
   
-  document.getElementById('next-lightbox-btn')?.addEventListener('click', () => {
-    if (operationalCards.length <= 1) return;
-    lightboxTrackIndex = (lightboxTrackIndex + 1) % operationalCards.length;
-    renderLightboxView();
-  });
+  const moveNext = () => {
+    if (filteredCards.length <= 1) return;
+    currentIdx = (currentIdx + 1) % filteredCards.length;
+    renderLightboxFrame();
+  };
 
-  document.getElementById('prev-lightbox-btn')?.addEventListener('click', () => {
-    if (operationalCards.length <= 1) return;
-    lightboxTrackIndex = (lightboxTrackIndex - 1 + operationalCards.length) % operationalCards.length;
-    renderLightboxView();
-  });
+  const movePrev = () => {
+    if (filteredCards.length <= 1) return;
+    currentIdx = (currentIdx - 1 + filteredCards.length) % filteredCards.length;
+    renderLightboxFrame();
+  };
 
-  lightboxElement?.addEventListener('click', (e) => { if (e.target === lightboxElement) dismissLightbox(); });
+  document.getElementById('next-lightbox-btn')?.addEventListener('click', moveNext);
+  document.getElementById('prev-lightbox-btn')?.addEventListener('click', movePrev);
+  lightbox?.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
 
+  // Escuta de comandos de acessibilidade teclado no lightbox
   document.addEventListener('keydown', (e) => {
-    if (!lightboxElement?.classList.contains('active')) return;
-    if (e.key === 'Escape') dismissLightbox();
-    if (e.key === 'ArrowRight') document.getElementById('next-lightbox-btn')?.click();
-    if (e.key === 'ArrowLeft') document.getElementById('prev-lightbox-btn')?.click();
+    if (!lightbox?.classList.contains('active')) return;
+    
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowRight') moveNext();
+    if (e.key === 'ArrowLeft') movePrev();
+
+    if (e.key === 'Tab') {
+      const elements = lightbox.querySelectorAll('button, [tabindex="0"]');
+      const first = elements[0];
+      const last = elements[elements.length - 1];
+
+      if (e.shiftKey) {
+        if (document.activeElement === first) { last.focus(); e.preventDefault(); }
+      } else {
+        if (document.activeElement === last) { first.focus(); e.preventDefault(); }
+      }
+    }
   });
 
-  // Copiar link e retorno ao topo
+  // Utilitários adicionais
   document.getElementById('btn-copy-link')?.addEventListener('click', () => {
     navigator.clipboard.writeText(window.location.href)
-      .then(() => triggerToast("✔ Link da experiência copiado!"))
-      .catch(() => triggerToast("Erro ao copiar."));
+      .then(() => triggerToast("Link copiado para a área de transferência."))
+      .catch(() => triggerToast("Não foi possível copiar o link automaticamente."));
   });
 
   btnHome?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 });
-      
+    
