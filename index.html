@@ -5,11 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="canonical" href="https://franzenart.github.io/franzen-art/">
   
-  <title>FranzenArt | Gabriel Franzen — Experiência Artística Tradicional</title>
-  <meta name="description" content="Explore o universo artístico de Gabriel Franzen. Um espaço imersivo dedicado a ilustrações 100% tradicionais, unindo cultura pop, animes, memes e resenha com a comunidade.">
-  <meta name="keywords" content="Gabriel Franzen, FranzenArt, desenho tradicional, ilustrador, São Paulo, anime, memes, cartoon, realismo, criador de conteúdo, YouTube Shorts, TikTok">
+  <title>FranzenArt | Gabriel Franzen — Sketchbook Digital</title>
+  <meta name="description" content="Entre no universo artístico de Gabriel Franzen. Uma experiência viva de ilustrações tradicionais, rascunhos, técnicas e a evolução do traço.">
   <meta name="author" content="Gabriel Franzen">
-  <meta name="theme-color" content="#0a0a12">
+  <meta name="theme-color" content="#0d0d11">
 
   <link rel="stylesheet" href="css/style.css">
 
@@ -25,217 +24,297 @@
       "@type": "PostalAddress",
       "addressLocality": "São Paulo",
       "addressCountry": "BR"
-    },
-    "description": "Artista tradicional que transforma ideias, memes e cultura pop em ilustrações físicas feitas à mão, engajando diretamente com sua comunidade.",
-    "knowsAbout": ["Desenho Tradicional", "Ilustração", "Anime", "Memes", "Realismo", "Criação de Conteúdo"]
+    }
   }
   </script>
 </head>
 <body data-theme="artistico">
 
   <div id="custom-pencil-cursor" aria-hidden="true">✏️</div>
-
   <div id="scroll-progress" aria-hidden="true"></div>
 
-  <a href="#gallery-section" class="skip-link">Ir direto para a galeria</a>
+  <a href="#gallery-section" class="skip-link">Pular para o conteúdo principal</a>
 
   <nav class="navbar">
     <div class="nav-container">
       <span class="logo">Franzen<span>Art</span></span>
       
-      <div class="nav-menu" role="navigation" aria-label="Menu Principal">
+      <div class="nav-menu" role="navigation" aria-label="Navegação do Sketchbook">
         <a href="#hero-section" class="menu-link">🏠 Início</a>
-        <a href="#gallery-section" class="menu-link">🎨 Galeria</a>
-        <a href="#about-section" class="menu-link">👨 Sobre Mim</a>
-        <a href="#materials-section" class="menu-link">📚 Materiais</a>
+        <a href="#about-section" class="menu-link">👨 Quem Sou</a>
+        <a href="#process-section" class="menu-link">✏️ Processo</a>
+        <a href="#gallery-section" class="menu-link">🖼️ Galeria</a>
+        <a href="#materials-section" class="menu-link">🖊️ Materiais</a>
+        <a href="#timeline-section" class="menu-link">📅 Evolução</a>
         <a href="#faq-section" class="menu-link">❓ FAQ</a>
       </div>
 
       <div class="nav-buttons">
-        <button id="btn-theme" class="btn-nav" aria-label="Alternar paleta ou tema visual">
-          <svg viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"/></svg>
-          <span id="theme-text">Tema: Artístico</span>
-        </button>
-        <button id="btn-copy-link" class="btn-nav" aria-label="Copiar link da experiência">
-          <svg viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
-        </button>
+        <button id="btn-theme" class="btn-nav" aria-label="Mudar visual do papel">🎭 Ciclo de Papel</button>
+        <button id="btn-copy-link" class="btn-nav" aria-label="Copiar link">🔗</button>
+        <button class="menu-toggle" id="menu-toggle-btn" aria-label="Abrir Menu">☰</button>
       </div>
     </div>
   </nav>
 
-  <header class="hero" id="hero-section">
-    <div class="hero-canvas-overlay"></div>
+  <aside class="mobile-sidebar" id="mobile-sidebar" aria-hidden="true">
+    <button class="close-sidebar" id="close-sidebar-btn">&times;</button>
+    <div class="sidebar-links">
+      <a href="#hero-section" class="sidebar-link">🏠 Início</a>
+      <a href="#about-section" class="sidebar-link">👨 Quem Sou</a>
+      <a href="#process-section" class="sidebar-link">✏️ Processo</a>
+      <a href="#gallery-section" class="sidebar-link">🖼️ Galeria</a>
+      <a href="#materials-section" class="sidebar-link">🖊️ Materiais</a>
+      <a href="#timeline-section" class="sidebar-link">📅 Evolução</a>
+      <a href="#faq-section" class="sidebar-link">❓ FAQ</a>
+    </div>
+  </aside>
+
+  <header class="hero section-hero" id="hero-section">
     <div class="hero-content reveal-on-scroll">
+      <span class="hero-badge">🎨 Bem-vindo ao Sketchbook Digital</span>
       <h1 class="main-title">Gabriel Franzen</h1>
-      <p class="hero-tagline">Isso não é um template. É uma imersão na evolução do traço, do papel em branco à arte-final.</p>
+      <p class="hero-tagline">Transformando ideias complexas, memes marcantes e cultura pop em ilustrações físicas feitas 100% à mão livre.</p>
       <div class="hero-cta-group">
-        <a href="#gallery-section" class="btn-primary">Entrar na Galeria</a>
-        <a href="#about-section" class="btn-secondary">Conhecer a Filosofia</a>
+        <a href="#gallery-section" class="btn-primary">Folhear Galeria</a>
+        <a href="#about-section" class="btn-secondary">Ler Manifesto</a>
       </div>
     </div>
-    <div class="scroll-indicator" aria-hidden="true">
-      <span>↓ Explore a Experiência</span>
-    </div>
+    <div class="scroll-indicator" aria-hidden="true">⬇ Role para abrir o caderno</div>
   </header>
 
   <main>
-    <section id="gallery-section" class="portfolio-container reveal-on-scroll">
-      <div class="section-header">
-        <h2>Galeria de Arte</h2>
-        <div class="bar"></div>
-      </div>
-
-      <div class="search-box-container">
-        <input type="text" id="gallery-search" placeholder="🔍 Pesquise por termos como 'Goku', 'Olho', 'Meme'..." aria-label="Filtrar desenhos por nome">
-      </div>
-      
-      <div class="tab-container" role="tablist" aria-label="Categorias de Ilustrações">
-        <button class="tab-btn active" role="tab" aria-selected="true" data-target="all" aria-controls="gallery-grid-wrapper">Todos</button>
-        <button class="tab-btn" role="tab" aria-selected="false" data-target="anime" aria-controls="gallery-grid-wrapper">Anime</button>
-        <button class="tab-btn" role="tab" aria-selected="false" data-target="realismo" aria-controls="gallery-grid-wrapper">Realismo</button>
-        <button class="tab-btn" role="tab" aria-selected="false" data-target="memes" aria-controls="gallery-grid-wrapper">Memes</button>
-        <button class="tab-btn" role="tab" aria-selected="false" data-target="cartoon" aria-controls="gallery-grid-wrapper">Cartoon</button>
-      </div>
-
-      <div class="gallery-grid" id="gallery-grid-wrapper">
-        
-        <div class="art-card reveal-on-scroll" data-category="anime" data-title="goku instinto superior" data-full="portfolio/goku-instinto-superior.webp" data-caption="Goku Instinto Superior — Arte 100% manual com nanquim e marcadores profissionais.">
-          <button class="btn-fav" aria-label="Favoritar esta obra" data-fav-id="goku-instinto">❤</button>
-          <div class="img-wrapper">
-            <img src="portfolio/goku-instinto-superior.webp" alt="Goku Instinto Superior desenhado em papel por Gabriel Franzen" width="400" height="500" fetchpriority="high">
-          </div>
-          <div class="art-info">
-            <h3>Goku Instinto Superior</h3>
-            <div class="art-meta"><span>Anime</span><time datetime="2026">2026</time></div>
-          </div>
-        </div>
-
-        <div class="art-card reveal-on-scroll" data-category="realismo" data-title="estudo de olho realista" data-full="portfolio/estudo-olho-realista.webp" data-caption="Estudo Realista de Olho — Sombreamento avançado com grafites graduados.">
-          <button class="btn-fav" aria-label="Favoritar esta obra" data-fav-id="estudo-olho">❤</button>
-          <div class="img-wrapper">
-            <img src="portfolio/estudo-olho-realista.webp" alt="Desenho de olho realista por Gabriel Franzen" width="400" height="500" loading="lazy" decoding="async">
-          </div>
-          <div class="art-info">
-            <h3>Estudo de Olho</h3>
-            <div class="art-meta"><span>Realismo</span><time datetime="2025">2025</time></div>
-          </div>
-        </div>
-
-        <div class="art-card reveal-on-scroll" data-category="memes" data-title="meme classico da internet" data-full="portfolio/meme-classico-internet.webp" data-caption="Meme Clássico — Releitura satírica baseada nas sugestões do TikTok.">
-          <button class="btn-fav" aria-label="Favoritar esta obra" data-fav-id="meme-classico">❤</button>
-          <div class="img-wrapper">
-            <img src="portfolio/meme-classico-internet.webp" alt="Meme icônico desenhado à mão livre" width="400" height="500" loading="lazy" decoding="async">
-          </div>
-          <div class="art-info">
-            <h3>Meme Clássico</h3>
-            <div class="art-meta"><span>Memes</span><time datetime="2026">2026</time></div>
-          </div>
-        </div>
-
-        <div class="art-card reveal-on-scroll" data-category="cartoon" data-title="estilo cartoon classico" data-full="portfolio/personagem-cartoon-classico.webp" data-caption="Estilo Cartoon — Linhas limpas feitas com canetas ponta fina pincel.">
-          <button class="btn-fav" aria-label="Favoritar esta obra" data-fav-id="cartoon-classico">❤</button>
-          <div class="img-wrapper">
-            <img src="portfolio/personagem-cartoon-classico.webp" alt="Personagem em estilo de desenho animado clássico" width="400" height="500" loading="lazy" decoding="async">
-          </div>
-          <div class="art-info">
-            <h3>Estilo Cartoon</h3>
-            <div class="art-meta"><span>Cartoon</span><time datetime="2024">2024</time></div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <section class="about-section id-visual" id="about-section">
+    
+    <section class="section-about" id="about-section">
       <div class="about-grid">
         <div class="about-text reveal-on-scroll">
           <div class="section-header">
             <h2>Sobre o Artista</h2>
             <div class="bar"></div>
           </div>
-          <p>Me chamo <strong>Gabriel Franzen</strong>, sou o criador por trás do <strong>FranzenArt</strong>. Minha missão não é apenas postar desenhos prontos, mas construir uma comunidade ativa em torno do processo criativo tradicional.</p>
-          <p>Em cada trabalho, traduzo ideias virais, ícones de animes, cartoons e a cultura pop da internet diretamente para o papel físico. O grande motor desse projeto é a <strong>interação direta e a resenha</strong> nos comentários, onde as sugestões do público ganham vida no traço físico.</p>
-        </div>
-        
-        <div class="about-social reveal-on-scroll">
-          <h2 style="font-size: 2.2rem; font-weight: 800; margin-bottom: 25px; letter-spacing: -1px;">Canais Oficiais</h2>
-          <p style="color: var(--text-muted); margin-bottom: 24px;">Assista aos bastidores e a criação completa das artes apresentadas:</p>
+          <p>Gabriel Franzen, conhecido nas redes sociais como <strong>FranzenArt</strong>, é um artista tradicional e criador de conteúdo de São Paulo, Brasil.</p>
+          <p>Desenha desde a infância e, ao longo de mais de cinco anos de prática constante, já produziu mais de 200 desenhos, explorando diferentes estilos e desafios artísticos. Seu trabalho combina criatividade, humor e cultura da internet, transformando memes, personagens, jogos, animes e ideias da comunidade em ilustrações feitas à mão.</p>
           
-          <div class="social-links">
-            <a href="https://www.tiktok.com/@franzen_art?_r=1&_t=ZS-97owukqLV71" target="_blank" rel="noopener noreferrer" class="social-card tiktok">
-              <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.02 1.63 4.19 1.21 1.25 2.86 1.94 4.57 2.05v3.91c-1.51-.03-3.01-.48-4.29-1.32-.7-.47-1.31-1.09-1.78-1.81v6.94c.04 2.19-.77 4.39-2.3 6.01-1.77 1.94-4.42 2.94-7.05 2.63-2.92-.29-5.61-2.26-6.68-5.02-1.29-3.21-.4-7.08 2.21-9.33 1.76-1.55 4.13-2.27 6.46-1.95v3.98c-1.18-.21-2.43.08-3.34.88-.97.8-1.42 2.11-1.14 3.35.31 1.51 1.7 2.66 3.25 2.62 1.49-.01 2.76-1.13 2.94-2.61.04-1.43.02-2.87.03-4.31V0h.89z"/></svg>
-              <span>TikTok Oficial</span>
-            </a>
-            <a href="https://www.instagram.com/franzen__art?igsh=MWNpczVwb2EzODViYw==" target="_blank" rel="noopener noreferrer" class="social-card insta">
-              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-              <span>Instagram</span>
-            </a>
-            <a href="https://youtube.com/@franzenart?si=wRHxhEzcB_YO1rPq" target="_blank" rel="noopener noreferrer" class="social-card youtube">
-              <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.11C19.517 3.545 12 3.545 12 3.545s-7.517 0-9.388.508a3.003 3.003 0 0 0-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 0 0 2.11 2.11c1.871.508 9.388.508 9.388.508s7.517 0 9.388-.508a3.003 3.003 0 0 0 2.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-              <span>YouTube Shorts</span>
-            </a>
+          <h3 class="subsection-title">Minha História</h3>
+          <p>Para mim, desenhar sempre foi muito mais do que um hobby. É a forma que encontrei de transformar ideias em arte, aprender constantemente e me conectar com pessoas que compartilham dos mesmos interesses.</p>
+          <p>Gosto de ouvir minha comunidade, responder comentários e transformar sugestões dos seguidores em novos desenhos. Ver uma ideia enviada por alguém virar uma ilustração pronta é uma das partes que mais gosto do meu trabalho.</p>
+        </div>
+
+        <div class="about-stats-panel reveal-on-scroll">
+          <div class="sketch-badge">✨ Estatísticas Reais</div>
+          <div class="stats-mini-grid">
+            <div class="mini-stat"><h4>+200</h4><p>Artes Criadas</p></div>
+            <div class="mini-stat"><h4>5 Anos</h4><p>De Evolução</p></div>
+            <div class="mini-stat"><h4>100%</h4><p>Tradicional</p></div>
+            <div class="mini-stat"><h4>+21K</h4><p>Fãs nos Canais</p></div>
+          </div>
+          <div class="about-hobbies">
+            <p><strong>Além dos papéis:</strong> Tocador de violão, jogador de futebol de fim de semana e focado em evoluir o traço diariamente.</p>
           </div>
         </div>
       </div>
+    </section>
 
-      <div class="stats-grid reveal-on-scroll">
-        <div class="stat-card"><h3>Volume</h3><p>+200 Artes</p></div>
-        <div class="stat-card"><h3>Consistência</h3><p>5 Anos Ativo</p></div>
-        <div class="stat-card"><h3>Estilo</h3><p>100% Tradicional</p></div>
-        <div class="stat-card"><h3>Base</h3><p>São Paulo - BR</p></div>
+    <section class="section-process" id="process-section">
+      <div class="section-header">
+        <h2>Processo Criativo</h2>
+        <div class="bar"></div>
+      </div>
+      <div class="process-flow">
+        <div class="process-step reveal-on-scroll" data-step="1">
+          <div class="step-icon">💡</div>
+          <h3>1. A Ideia / Resenha</h3>
+          <p>Varredura diária nos comentários das redes atrás de pedidos marcantes ou memes históricos que a internet ama.</p>
+        </div>
+        <div class="process-step reveal-on-scroll" data-step="2">
+          <div class="step-icon">✏️</div>
+          <h3>2. Rascunho Inicial</h3>
+          <p>Estruturação anatômica básica no grafite leve para definir a escala do desenho e o posicionamento final.</p>
+        </div>
+        <div class="process-step reveal-on-scroll" data-step="3">
+          <div class="step-icon">🖊️</div>
+          <h3>3. Arte-Final (Nanquim)</h3>
+          <p>Aplicação da tinta definitiva preta. Linhas firmes determinam o estilo marcante de cada cartoon ou anime.</p>
+        </div>
+        <div class="process-step reveal-on-scroll" data-step="4">
+          <div class="step-icon">📱</div>
+          <h3>4. Publicação</h3>
+          <p>Edição limpa do processo em vídeo dinâmico para o TikTok, Reels e Shorts unindo técnica e entretenimento.</p>
+        </div>
       </div>
     </section>
 
-    <section id="materials-section" class="materials-container reveal-on-scroll">
+    <section class="section-featured">
+      <div class="featured-card reveal-on-scroll">
+        <div class="featured-img-box">
+          <img src="portfolio/goku-instinto-superior.webp" alt="Obra em Destaque do Mês" width="500" height="600" loading="lazy">
+        </div>
+        <div class="featured-info-box">
+          <span class="spotlight-tag">🏆 Obra em Destaque</span>
+          <h2>Goku Instinto Superior</h2>
+          <p class="featured-desc">Uma releitura focada no contraste extremo de luz e sombra, utilizando canetas nanquim descartáveis e camadas densas de marcadores artísticos em papel profissional.</p>
+          <div class="featured-meta-badges">
+            <span>Estilo: Anime</span>
+            <span>Tempo: 6 Horas</span>
+            <span>Gramatura: 180g/m²</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-gallery" id="gallery-section">
       <div class="section-header">
-        <h2>Estúdio & Materiais</h2>
+        <h2>Galeria do Artista</h2>
+        <div class="bar"></div>
+      </div>
+
+      <div class="gallery-toolbar reveal-on-scroll">
+        <input type="text" id="gallery-search" placeholder="🔍 Procure por termos (Ex: Goku, Olho, Meme...)" aria-label="Buscar artes">
+        <div class="tab-container" role="tablist" aria-label="Filtros da galeria">
+          <button class="tab-btn active" role="tab" aria-selected="true" data-target="all">Todos</button>
+          <button class="tab-btn" role="tab" aria-selected="false" data-target="anime">Anime</button>
+          <button class="tab-btn" role="tab" aria-selected="false" data-target="realismo">Realismo</button>
+          <button class="tab-btn" role="tab" aria-selected="false" data-target="memes">Memes</button>
+          <button class="tab-btn" role="tab" aria-selected="false" data-target="cartoon">Cartoon</button>
+        </div>
+      </div>
+
+      <div class="gallery-grid" id="main-gallery-grid">
+        <div class="art-card reveal-on-scroll" data-category="anime" data-title="goku instinto superior" data-full="portfolio/goku-instinto-superior.webp" data-caption="Goku Instinto Superior — Arte finalizada à mão livre.">
+          <button class="btn-fav" aria-label="Favoritar" data-fav-id="goku">❤</button>
+          <div class="img-wrapper"><img src="portfolio/goku-instinto-superior.webp" alt="Goku Instinto Superior" width="400" height="500" loading="lazy"></div>
+          <div class="art-info"><h3>Goku Instinto Superior</h3><div class="art-meta"><span>Anime</span><time>2026</time></div></div>
+        </div>
+        
+        <div class="art-card reveal-on-scroll" data-category="realismo" data-title="estudo de olho realista" data-full="portfolio/estudo-olho-realista.webp" data-caption="Estudo Realista de Olho — Grafite sobre papel.">
+          <button class="btn-fav" aria-label="Favoritar" data-fav-id="olho">❤</button>
+          <div class="img-wrapper"><img src="portfolio/estudo-olho-realista.webp" alt="Estudo de Olho" width="400" height="500" loading="lazy"></div>
+          <div class="art-info"><h3>Estudo de Olho</h3><div class="art-meta"><span>Realismo</span><time>2025</time></div></div>
+        </div>
+
+        <div class="art-card reveal-on-scroll" data-category="memes" data-title="meme classico internet" data-full="portfolio/meme-classico-internet.webp" data-caption="Meme Clássico — Do digital para o papel físico.">
+          <button class="btn-fav" aria-label="Favoritar" data-fav-id="meme">❤</button>
+          <div class="img-wrapper"><img src="portfolio/meme-classico-internet.webp" alt="Meme Clássico" width="400" height="500" loading="lazy"></div>
+          <div class="art-info"><h3>Meme Clássico</h3><div class="art-meta"><span>Memes</span><time>2026</time></div></div>
+        </div>
+
+        <div class="art-card reveal-on-scroll" data-category="cartoon" data-title="estilo cartoon classico" data-full="portfolio/personagem-cartoon-classico.webp" data-caption="Estilo Cartoon — Finalização precisa em nanquim.">
+          <button class="btn-fav" aria-label="Favoritar" data-fav-id="cartoon">❤</button>
+          <div class="img-wrapper"><img src="portfolio/personagem-cartoon-classico.webp" alt="Estilo Cartoon" width="400" height="500" loading="lazy"></div>
+          <div class="art-info"><h3>Estilo Cartoon</h3><div class="art-meta"><span>Cartoon</span><time>2024</time></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-materials" id="materials-section">
+      <div class="section-header">
+        <h2>Estojo de Ferramentas</h2>
         <div class="bar"></div>
       </div>
       <div class="materials-grid">
-        <div class="material-item"><h4>Grafite & Traço</h4><p>Lápis técnicos graduados para mapeamento de sombras profundas.</p></div>
-        <div class="material-item"><h4>Marcadores</h4><p>Canetas importadas à base de álcool para preenchimentos homogêneos.</p></div>
-        <div class="material-item"><h4>Arte-Final</h4><p>Canetas profissionais Nanquim descartáveis de fluxo constante.</p></div>
+        <div class="material-notebook reveal-on-scroll">
+          <h3>O Que Uso No Dia a Dia</h3>
+          <ul class="materials-list">
+            <li><strong>Lápis Grafite:</strong> Graduações leves para contorno inicial e macios para sombras espessas.</li>
+            <li><strong>Canetas Nanquim:</strong> Pontas variadas para criar linhas limpas de contorno.</li>
+            <li><strong>Papéis Técnicos:</strong> Uso folhas de alta gramatura (180g/m² a 300g/m²) para marcadores e sulfite comum para estudos ágeis.</li>
+            <li><strong>Finalizadores:</strong> Borrachas maleáveis e apontadores metálicos de precisão.</li>
+          </ul>
+        </div>
       </div>
     </section>
 
-    <section id="faq-section" class="faq-section reveal-on-scroll">
+    <section class="section-timeline" id="timeline-section">
+      <div class="section-header">
+        <h2>Linha do Tempo</h2>
+        <div class="bar"></div>
+      </div>
+      <div class="timeline-container">
+        <div class="timeline-block reveal-on-scroll">
+          <div class="timeline-bullet"></div>
+          <div class="timeline-box">
+            <span class="timeline-year">2018 - 2021</span>
+            <h3>Primeiros Traços</h3>
+            <p>Desenhos focados puramente em rascunhos de estudos anatômicos em cadernos escolares comuns.</p>
+          </div>
+        </div>
+        <div class="timeline-block reveal-on-scroll">
+          <div class="timeline-bullet"></div>
+          <div class="timeline-box">
+            <span class="timeline-year">2022 - 2024</span>
+            <h3>Nascimento do FranzenArt</h3>
+            <p>Migração para materiais profissionais, adoção de canetas nanquim e início da produção de vídeos curtos de bastidores.</p>
+          </div>
+        </div>
+        <div class="timeline-block reveal-on-scroll">
+          <div class="timeline-bullet"></div>
+          <div class="timeline-box">
+            <span class="timeline-year">2026</span>
+            <h3>Comunidade Ativa</h3>
+            <p>Mais de 200 artes catalogadas e conexão direta com milhares de seguidores transformando comentários em arte palpável.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-faq" id="faq-section">
       <div class="section-header">
         <h2>Perguntas Frequentes</h2>
         <div class="bar"></div>
       </div>
-      <div class="faq-container">
-        <details>
-          <summary>Como funcionam os pedidos de arte?</summary>
-          <p>O processo é orgânico: basta interagir em qualquer post dos canais oficiais deixando sua sugestão. Seleciono as ideias de maior engajamento ou criatividade para virarem vídeo.</p>
+      <div class="faq-accordion-box">
+        <details class="reveal-on-scroll">
+          <summary>Como posso ter um comentário desenhado?</summary>
+          <p>O processo é 100% orgânico! Comente suas ideias mais malucas ou marcantes nos vídeos do TikTok, Instagram ou YouTube Shorts. Eu monitoro ativamente as sugestões recorrentes.</p>
         </details>
-        <details>
-          <summary>Qual papel é utilizado nos desenhos?</summary>
-          <p>Utilizo papéis de alta gramatura (mínimo de 180g/m² a 300g/m²) com textura lisa ou acetinada, garantindo que a tinta dos marcadores não sangre.</p>
+        <details class="reveal-on-scroll">
+          <summary>Você faz artes digitais?</summary>
+          <p>Não, o coração do FranzenArt é a resistência tradicional. Toda a magia acontece fisicamente no papel, usando lápis, marcadores e borracha.</p>
         </details>
       </div>
     </section>
+
+    <section class="section-networks">
+      <div class="networks-grid">
+        <a href="https://www.tiktok.com/@franzen_art?_r=1&_t=ZS-97owukqLV71" target="_blank" rel="noopener noreferrer" class="net-card net-tiktok reveal-on-scroll">
+          <div class="net-icon">🎵</div>
+          <h3>TikTok</h3>
+          <p>Processos virais e interação direta.</p>
+        </a>
+        <a href="https://www.instagram.com/franzen__art?igsh=MWNpczVwb2EzODViYw==" target="_blank" rel="noopener noreferrer" class="net-card net-insta reveal-on-scroll">
+          <div class="net-icon">📸</div>
+          <h3>Instagram</h3>
+          <p>Portfólio de fotos e avisos nos stories.</p>
+        </a>
+        <a href="https://youtube.com/@franzenart?si=wRHxhEzcB_YO1rPq" target="_blank" rel="noopener noreferrer" class="net-card net-youtube reveal-on-scroll">
+          <div class="net-icon">▶</div>
+          <h3>YouTube Shorts</h3>
+          <p>Vídeos em alta definição técnica.</p>
+        </a>
+      </div>
+    </section>
+
   </main>
 
-  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true">
-    <button class="lightbox-close" id="lightbox-close" aria-label="Fechar galeria de arte">&times;</button>
-    <button class="lightbox-nav prev" id="lightbox-prev" aria-label="Desenho anterior">‹</button>
+  <div class="lightbox" id="artist-lightbox" role="dialog" aria-modal="true" aria-hidden="true">
+    <button class="lightbox-close" id="close-lightbox-btn" aria-label="Fechar">&times;</button>
+    <button class="lightbox-nav prev" id="prev-lightbox-btn">‹</button>
     <div class="lightbox-content">
-      <img id="lightbox-img" src="" alt="">
-      <p id="lightbox-caption"></p>
-      <div id="lightbox-counter"></div>
+      <img id="lightbox-main-img" src="" alt="">
+      <p id="lightbox-main-caption"></p>
+      <div id="lightbox-main-counter"></div>
     </div>
-    <button class="lightbox-nav next" id="lightbox-next" aria-label="Próximo desenho">›</button>
+    <button class="lightbox-nav next" id="next-lightbox-btn">›</button>
   </div>
 
-  <button id="btn-home" class="btn-back-top" aria-label="Voltar de forma suave ao cabeçalho" aria-hidden="true">↑</button>
-
+  <button id="btn-home" class="btn-back-top" aria-label="Voltar ao topo" aria-hidden="true">↑</button>
   <div id="toast-container" aria-live="polite"></div>
 
   <footer>
-    <p>© 2026 FranzenArt — Gabriel Franzen. Todos os direitos reservados.</p>
+    <p>© 2026 FranzenArt — Gabriel Franzen. Feito de forma artesanal.</p>
   </footer>
 
   <script src="js/script.js"></script>
 </body>
-  </html>
-  
+        </html>
+        
