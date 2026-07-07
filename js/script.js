@@ -1,17 +1,11 @@
-/**
- * Portfólio Oficial FranzenArt
- * Arquivo de Scripts Estruturado logicamente por módulos de performance
- */
-
 document.addEventListener('DOMContentLoaded', () => {
 
-  // --- MÓDULO 1: ABAS DA GALERIA (ISOLAMENTO COMPLETO) ---
+  // --- ABAS DA GALERIA ---
   const tabs = document.querySelectorAll('.tab-btn');
   const contents = document.querySelectorAll('.tab-content');
 
   tabs.forEach(tab => {
     tab.addEventListener('click', () => {
-      // Controle de Estados WAI-ARIA para Acessibilidade
       tabs.forEach(t => {
         t.classList.remove('active');
         t.setAttribute('aria-selected', 'false');
@@ -29,8 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-
-  // --- MÓDULO 2: ALTERNAR TEMA E PERSISTÊNCIA ---
+  // --- ALTERNAR TEMA ---
   const btnTheme = document.getElementById('btn-theme');
   
   if (localStorage.getItem('franzen_theme_pref') === 'pb') {
@@ -44,34 +37,29 @@ document.addEventListener('DOMContentLoaded', () => {
     showToast(isPB ? "Modo Minimalista P&B ativado" : "Modo Portfólio Artístico ativado");
   });
 
-
-  // --- MÓDULO 3: ÁREA DE TRANSFERÊNCIA (CLIPBOARD) ---
+  // --- CLIPBOARD ---
   const btnCopy = document.getElementById('btn-copy-link');
   btnCopy?.addEventListener('click', () => {
     navigator.clipboard.writeText(window.location.href)
-      .then(() => showToast("✔ Link copiado com sucesso!"))
-      .catch(() => showToast("Não foi possível copiar o link automaticamente."));
+      .then(() => showToast("✔ Link do portfólio copiado!"))
+      .catch(() => showToast("Erro ao copiar link."));
   });
 
-
-  // --- MÓDULO 4: CENTRAL DE TOASTS ---
+  // --- SISTEMA TOAST ---
   function showToast(msg) {
     const container = document.getElementById('toast-container');
     if (!container) return;
     
-    // Limpa toasts antigos para não acumular em cliques rápidos
     container.innerHTML = '';
-    
     const toast = document.createElement('div');
     toast.className = 'toast';
     toast.textContent = msg;
     container.appendChild(toast);
     
-    setTimeout(() => { if(toast) toast.remove(); }, 2950);
+    setTimeout(() => { if(toast) toast.remove(); }, 2900);
   }
 
-
-  // --- MÓDULO 5: LIGHTBOX COMPACTO (NAVEGAÇÃO PREMIUM) ---
+  // --- LIGHTBOX GALERIA ---
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightbox-img');
   const lightboxCaption = document.getElementById('lightbox-caption');
@@ -82,7 +70,6 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentCards = [];
   let currentIndex = 0;
 
-  // Atualiza a lista focando apenas na categoria visível no momento
   const syncGalleryContext = () => {
     const activeSection = document.querySelector('.tab-content.active');
     if (activeSection) {
@@ -130,10 +117,8 @@ document.addEventListener('DOMContentLoaded', () => {
   nextBtn?.addEventListener('click', moveNext);
   prevBtn?.addEventListener('click', movePrev);
   
-  // Fechar clicando no fundo escuro fora do conteúdo
   lightbox?.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
 
-  // Navegação Premium por Teclado (Acessibilidade)
   document.addEventListener('keydown', (e) => {
     if (!lightbox.classList.contains('active')) return;
     if (e.key === 'Escape') closeLightbox();
@@ -141,11 +126,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.key === 'ArrowLeft') movePrev();
   });
 
-
-  // --- MÓDULO 6: MONITORAMENTO DE SCROLL ---
+  // --- BACK TO TOP SCROLL ---
   const btnHome = document.getElementById('btn-home');
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 450) {
+    if (window.scrollY > 400) {
       btnHome?.classList.add('visible');
       btnHome?.setAttribute('aria-hidden', 'false');
     } else {
@@ -156,4 +140,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
   btnHome?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 });
-    
+      
