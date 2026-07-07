@@ -143,7 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
     box.innerHTML = '';
     const toast = document.createElement('div');
     toast.className = 'toast';
-    toast.textContent = message; // Atribuição via textContent impede injeções
+    toast.textContent = message; // Proteção estrita atribuindo como texto puro
     box.appendChild(toast);
     setTimeout(() => { toast.remove(); }, 2500);
   }
@@ -161,7 +161,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (filteredCards.length === 0) return;
     const currentCard = filteredCards[currentIdx];
     
-    // Filtro estrito antes da inserção
     const validatedSrc = currentCard.dataset.full;
     const validatedCaption = currentCard.dataset.caption;
 
@@ -212,7 +211,6 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('prev-lightbox-btn')?.addEventListener('click', movePrev);
   lightbox?.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
 
-  // Escuta de comandos de acessibilidade teclado no lightbox
   document.addEventListener('keydown', (e) => {
     if (!lightbox?.classList.contains('active')) return;
     
@@ -233,7 +231,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Utilitários adicionais
+  // Utilitário de Cópia de Link Seguro
   document.getElementById('btn-copy-link')?.addEventListener('click', () => {
     navigator.clipboard.writeText(window.location.href)
       .then(() => triggerToast("Link copiado para a área de transferência."))
@@ -242,4 +240,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
   btnHome?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 });
-    
+          
