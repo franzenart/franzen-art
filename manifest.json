@@ -1,19 +1,18 @@
 {
-  "name": "FranzenArt",
   "short_name": "FranzenArt",
-  "description": "Portfólio de desenhos tradicionais e manuais por Gabriel Franzen.",
-  "start_url": "/franzen-art/",
-  "display": "standalone",
-  "background_color": "#040408",
-  "theme_color": "#0077ff",
-  "orientation": "portrait",
+  "name": "FranzenArt | Gabriel Franzen",
+  "description": "Portfólio oficial de desenhos tradicionais criados à mão livre por Gabriel Franzen.",
   "icons": [
     {
-      "src": "favicon.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "src": "portfolio/desenho-01.webp",
+      "type": "image/webp",
+      "sizes": "192x192",
+      "purpose": "any"
     }
-  ]
+  ],
+  "start_url": "https://franzenart.github.io/franzen-art/",
+  "background_color": "#0d0d11",
+  "theme_color": "#0d0d11",
+  "display": "standalone",
+  "orientation": "portrait"
 }
-
