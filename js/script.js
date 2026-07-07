@@ -1,20 +1,12 @@
+'use strict';
+
 /**
- * Arquitetura de Controle do Sketchbook Digital FranzenArt
- * JavaScript vanila limpo, focado em segurança estática e UX fluida.
+ * Motor Lógico FranzenArt - Edição Avançada de Performance e Resiliência
  */
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  // --- 1. SEGUIDOR DE CURSOR DE PRECISÃO (✏️) ---
-  const pencilCursor = document.getElementById('custom-pencil-cursor');
-  if (pencilCursor) {
-    document.addEventListener('mousemove', (e) => {
-      pencilCursor.style.left = e.clientX + 'px';
-      pencilCursor.style.top = e.clientY + 'px';
-    });
-  }
-
-  // --- 2. GESTÃO DO MENU LATERAL E OVERLAY ---
+  // --- 1. CONTROLE DO MENU LATERAL MOBILE ---
   const toggleBtn = document.getElementById('menu-toggle-btn');
   const closeSidebarBtn = document.getElementById('close-sidebar-btn');
   const sidebar = document.getElementById('mobile-sidebar');
@@ -39,9 +31,10 @@ document.addEventListener('DOMContentLoaded', () => {
     link.addEventListener('click', closeMenu);
   });
 
-  // --- 3. CONTROLE DE IMAGENS E PLACEMENT PREVENTIVO CONTRA QUEBRAS ---
+  // --- 2. GESTÃO DE CARREGAMENTO E TRATAMENTO DE ERROS DE IMAGEM ---
   const galleryImages = document.querySelectorAll('.gallery-img');
   galleryImages.forEach(img => {
+    // Trata imagens já armazenadas em cache
     if (img.complete) {
       img.classList.add('loaded');
       img.previousElementSibling?.remove();
@@ -50,15 +43,21 @@ document.addEventListener('DOMContentLoaded', () => {
         img.classList.add('loaded');
         img.previousElementSibling?.remove();
       });
-      img.addEventListener('error', () => {
-        if (img.previousElementSibling) {
-          img.previousElementSibling.textContent = "Projeto em desenvolvimento";
-        }
-      });
     }
+
+    // Fallback contra links corrompidos ou erros de transmissão no servidor
+    img.addEventListener('error', () => {
+      img.alt = "Ilustração temporariamente indisponível";
+      img.style.display = "none";
+      const placeholder = img.previousElementSibling;
+      if (placeholder) {
+        placeholder.textContent = "⚠️ Erro ao carregar obra";
+        placeholder.style.color = "var(--secondary)";
+      }
+    });
   });
 
-  // --- 4. ENGINE DE ROLAGEM, PROGRESSO E SEÇÃO ATIVA ---
+  // --- 3. MONITORAMENTO DE SCROLL (PROGRESS BAR & REVEAL SYSTEM) ---
   const scrollProgress = document.getElementById('scroll-progress');
   const revealElements = document.querySelectorAll('.reveal-on-scroll');
   const btnHome = document.getElementById('btn-home');
@@ -100,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('scroll', monitorScroll, { passive: true });
   monitorScroll();
 
-  // --- 5. CATEGORIZAÇÃO DE TABS ---
+  // --- 4. SISTEMA DE FILTRAGEM DO PORTFÓLIO ---
   const tabButtons = document.querySelectorAll('.tab-btn');
   const artCards = document.querySelectorAll('.art-card');
 
@@ -117,38 +116,52 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // --- 6. SWITCH DE APARÊNCIA LOCAL STORAGE (PROTEGIDO) ---
+  // --- 5. ALTERNÂNCIA SEGURA DE APARÊNCIA (LocalStorage Blindado) ---
   const themeButton = document.getElementById('btn-theme');
   const themes = ['artistico', 'papel'];
   let currentThemeIdx = themes.indexOf(document.body.getAttribute('data-theme') || 'artistico');
 
-  const savedTheme = localStorage.getItem('franzen_theme');
-  if (savedTheme && themes.includes(savedTheme)) {
-    document.body.setAttribute('data-theme', savedTheme);
-    currentThemeIdx = themes.indexOf(savedTheme);
+  try {
+    const savedTheme = localStorage.getItem('franzen_theme');
+    if (savedTheme && themes.includes(savedTheme)) {
+      document.body.setAttribute('data-theme', savedTheme);
+      currentThemeIdx = themes.indexOf(savedTheme);
+    }
+  } catch {
+    // Configurações restritivas de privacidade bloquearam o armazenamento local
   }
 
   themeButton?.addEventListener('click', () => {
     currentThemeIdx = (currentThemeIdx + 1) % themes.length;
     const selected = themes[currentThemeIdx];
     document.body.setAttribute('data-theme', selected);
-    localStorage.setItem('franzen_theme', selected);
-    triggerToast(`Aparência alterada: Modo ${selected.toUpperCase()}`);
+    
+    try {
+      localStorage.setItem('franzen_theme', selected);
+    } catch {
+      // Falha silenciosa se armazenamento estiver inacessível
+    }
+    
+    triggerToast(`Aparência: Modo ${selected.toUpperCase()}`);
   });
 
-  // --- 7. EMISSOR DE TOAST SEGURO (ANTI-XSS) ---
+  // --- 6. GERADOR DE COMPONENTES TOAST SEGUROS (Anti-XSS Dinâmico) ---
   function triggerToast(message) {
     const box = document.getElementById('toast-container');
     if (!box) return;
-    box.innerHTML = '';
+    
+    while (box.firstChild) {
+      box.removeChild(box.firstChild);
+    }
+    
     const toast = document.createElement('div');
     toast.className = 'toast';
-    toast.textContent = message; // Proteção estrita atribuindo como texto puro
+    toast.textContent = message;
     box.appendChild(toast);
     setTimeout(() => { toast.remove(); }, 2500);
   }
 
-  // --- 8. VISUALIZADOR LIGHTBOX COM ARQUITETURA FOCUS TRAP ---
+  // --- 7. LIGHTBOX COM VALIDAÇÃO RÍGIDA DE CAMINHO ---
   const lightbox = document.getElementById('artist-lightbox');
   const lightboxImg = document.getElementById('lightbox-main-img');
   const lightboxCaption = document.getElementById('lightbox-main-caption');
@@ -161,11 +174,16 @@ document.addEventListener('DOMContentLoaded', () => {
     if (filteredCards.length === 0) return;
     const currentCard = filteredCards[currentIdx];
     
-    const validatedSrc = currentCard.dataset.full;
+    const imageSrc = currentCard.dataset.full;
     const validatedCaption = currentCard.dataset.caption;
 
-    if (lightboxImg) lightboxImg.src = validatedSrc;
-    if (lightboxCaption) lightboxCaption.textContent = validatedCaption;
+    // RegEx Estrita de Controle: Valida caminho estático impedindo injeção de strings arbitrárias
+    if (!imageSrc || !/^portfolio\/[a-zA-Z0-9-_]+\.webp$/.test(imageSrc)) {
+      return;
+    }
+
+    if (lightboxImg) lightboxImg.src = imageSrc;
+    if (lightboxCaption) lightboxCaption.textContent = validatedCaption || "Obra Artística FranzenArt";
     if (lightboxCounter) lightboxCounter.textContent = `${currentIdx + 1} de ${filteredCards.length}`;
   };
 
@@ -180,6 +198,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (currentIdx !== -1 && lightbox) {
       renderLightboxFrame();
       lightbox.classList.add('active');
+      lightbox.setAttribute('aria-modal', 'true');
       lightbox.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
       lightbox.focus();
@@ -211,6 +230,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('prev-lightbox-btn')?.addEventListener('click', movePrev);
   lightbox?.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
 
+  // Escuta de teclado para acessibilidade (Aparando Foco com Tab Linker)
   document.addEventListener('keydown', (e) => {
     if (!lightbox?.classList.contains('active')) return;
     
@@ -231,13 +251,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Utilitário de Cópia de Link Seguro
+  // Copiar endereço oficial de navegação via Clipboard API
   document.getElementById('btn-copy-link')?.addEventListener('click', () => {
     navigator.clipboard.writeText(window.location.href)
-      .then(() => triggerToast("Link copiado para a área de transferência."))
-      .catch(() => triggerToast("Não foi possível copiar o link automaticamente."));
+      .then(() => triggerToast("Link do portfólio copiado."))
+      .catch(() => triggerToast("Não foi possível copiar automaticamente."));
   });
 
   btnHome?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 });
-          
+                     
