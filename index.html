@@ -4,14 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; base-uri 'self'; form-action 'self'; frame-ancestors 'none';">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-src 'none'; media-src 'self'; connect-src 'self'; worker-src 'none'; manifest-src 'self'; upgrade-insecure-requests;">
   <meta name="referrer" content="strict-origin-when-cross-origin">
-  <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
+  <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=(), usb=(), bluetooth=(), magnetometer=(), gyroscope=(), accelerometer=()">
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
 
-  <link class="canonical" href="https://franzenart.github.io/franzen-art/">
-  <title>FranzenArt | Gabriel Franzen — Sketchbook Digital</title>
-  <meta name="description" content="Espaço de registro e documentação visual dos processos, estudos e evolução artística de Gabriel Franzen.">
+  <link rel="canonical" href="https://franzenart.github.io/franzen-art/">
+  <meta name="robots" content="index, follow">
+  <meta name="googlebot" content="index, follow">
+  <meta name="color-scheme" content="dark light">
+
+  <title>FranzenArt | Gabriel Franzen — Artista Tradicional e Criador de Conteúdo</title>
+  <meta name="description" content="Portfólio oficial de Gabriel Franzen (FranzenArt). Transformando memes, personagens, jogos, animes e cultura pop em desenhos feitos à mão livre.">
   <meta name="author" content="Gabriel Franzen">
   <meta name="theme-color" content="#0d0d11">
 
@@ -24,32 +28,39 @@
     "name": "Gabriel Franzen",
     "alternateName": "FranzenArt",
     "url": "https://franzenart.github.io/franzen-art/",
-    "jobTitle": "Artista Tradicional"
+    "jobTitle": "Artista Tradicional e Criador de Conteúdo",
+    "areaServed": "Brasil",
+    "sameAs": [
+      "https://www.tiktok.com/@franzen_art",
+      "https://www.instagram.com/franzen__art/",
+      "https://youtube.com/@franzenart"
+    ]
   }
   </script>
 </head>
 <body data-theme="artistico">
 
-  <div id="custom-pencil-cursor" aria-hidden="true">✏️</div>
   <div id="scroll-progress" aria-hidden="true"></div>
 
-  <a href="#gallery-section" class="skip-link">Pular para a galeria</a>
+  <a href="#gallery-section" class="skip-link">Pular para o portfólio de desenhos</a>
 
   <nav class="navbar">
     <div class="nav-container">
       <span class="logo">Franzen<span>Art</span></span>
       
-      <div class="nav-menu" role="navigation" aria-label="Navegação principal">
+      <div class="nav-menu" role="navigation" aria-label="Navegação principal do site">
         <a href="#hero-section" class="menu-link active-nav">Início</a>
         <a href="#about-section" class="menu-link">Sobre</a>
+        <a href="#brand-section" class="menu-link">O Projeto</a>
         <a href="#process-section" class="menu-link">Processo</a>
-        <a href="#gallery-section" class="menu-link">Galeria</a>
+        <a href="#gallery-section" class="menu-link">Portfólio</a>
+        <a href="#comunidade-section" class="menu-link">Comunidade</a>
         <a href="#faq-section" class="menu-link">FAQ</a>
       </div>
 
       <div class="nav-buttons">
-        <button id="btn-theme" class="btn-nav" aria-label="Alterar tema visual">🎨 Aparência</button>
-        <button id="btn-copy-link" class="btn-nav" aria-label="Copiar link do site">🔗</button>
+        <button id="btn-theme" class="btn-nav" aria-label="Mudar visual do site">🎨 Aparência</button>
+        <button id="btn-copy-link" class="btn-nav" aria-label="Copiar link oficial do portfólio"><span class="nav-btn-icon">🔗</span><span class="nav-btn-text"> Copiar Link</span></button>
         <button class="menu-toggle" id="menu-toggle-btn" aria-label="Abrir menu lateral">☰</button>
       </div>
     </div>
@@ -60,8 +71,10 @@
     <div class="sidebar-links">
       <a href="#hero-section" class="sidebar-link">Início</a>
       <a href="#about-section" class="sidebar-link">Sobre</a>
+      <a href="#brand-section" class="sidebar-link">O Projeto</a>
       <a href="#process-section" class="sidebar-link">Processo</a>
-      <a href="#gallery-section" class="sidebar-link">Galeria</a>
+      <a href="#gallery-section" class="sidebar-link">Portfólio</a>
+      <a href="#comunidade-section" class="sidebar-link">Comunidade</a>
       <a href="#faq-section" class="sidebar-link">FAQ</a>
     </div>
   </aside>
@@ -69,12 +82,13 @@
 
   <header class="hero" id="hero-section">
     <div class="hero-content reveal-on-scroll">
-      <span class="hero-badge">Estudos &amp; Processos</span>
-      <h1 class="main-title">Gabriel Franzen</h1>
-      <p class="hero-tagline">Desenhos feitos à mão livre, conceitos em desenvolvimento e o registro diário da evolução do traço.</p>
+      <span class="hero-badge">Portfólio Oficial</span>
+      <h1 class="main-title">GABRIEL FRANZEN</h1>
+      <p class="hero-subtitle-brand">Artista tradicional e criador de conteúdo por trás do FranzenArt</p>
+      <p class="hero-tagline">Transformo memes, personagens, jogos, animes, cultura pop e ideias da internet em desenhos feitos à mão, compartilhando minha evolução artística e meu processo criativo.</p>
       <div class="hero-cta-group">
-        <a href="#gallery-section" class="btn-primary">Folhear Caderno</a>
-        <a href="#about-section" class="btn-secondary">Sobre o Processo</a>
+        <a href="#gallery-section" class="btn-primary">Ver Portfólio</a>
+        <a href="#about-section" class="btn-secondary">Conheça Minha História</a>
       </div>
     </div>
   </header>
@@ -85,84 +99,168 @@
       <div class="about-grid">
         <div class="about-text reveal-on-scroll">
           <div class="section-header">
-            <h2>Sobre o Sketchbook</h2>
+            <h2>Sobre Gabriel Franzen</h2>
             <div class="bar"></div>
           </div>
-          <p>Este espaço funciona como um caderno digital de acompanhamento. Muito mais do que exibir resultados finalizados, o objetivo é documentar a jornada física da arte tradicional, testes de hachuras, estudos estruturais e composições originais.</p>
-          <p>Cada projeto postado reflete horas de prática sobre o papel, utilizando métodos tradicionais de desenho e observação contínua.</p>
+          <p>Eu sou Gabriel Franzen, artista tradicional e criador de conteúdo brasileiro por trás do FranzenArt.</p>
+          <p>Desenho desde criança e há mais de cinco anos venho evoluindo constantemente na arte. Durante essa jornada, já produzi mais de 200 desenhos explorando diferentes estilos, como anime, cartoon, realismo e ilustrações inspiradas na cultura da internet.</p>
+          <p>Minha arte é uma forma de transformar ideias em desenhos e criar uma conexão com pessoas através da criatividade.</p>
         </div>
 
         <div class="about-stats-panel reveal-on-scroll">
-          <div class="sketch-badge">Abordagem</div>
-          <p class="philosophy-text">"Os materiais e suportes variam de acordo com o objetivo do estudo. O foco principal não reside na sofisticação das ferramentas utilizadas, mas na consistência do aprendizado e no refinamento do traço dia após dia."</p>
+          <div class="sketch-badge">Evolução Constante</div>
+          <p class="philosophy-text">"Meu foco principal não está apenas nos materiais utilizados, mas na evolução constante do traço, criatividade e capacidade de transformar ideias em desenhos."</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-brand" id="brand-section">
+      <div class="brand-container reveal-on-scroll">
+        <div class="section-header">
+          <h2>O que é o FranzenArt?</h2>
+          <div class="bar"></div>
+        </div>
+        <div class="brand-content-box">
+          <p class="highlight-p">FranzenArt é o projeto artístico criado por Gabriel Franzen, unindo desenho tradicional, entretenimento e cultura da internet.</p>
+          <p>O objetivo do projeto é transformar memes, personagens, jogos, animes e sugestões da comunidade em ilustrações únicas feitas à mão.</p>
+          <p>Mais do que apenas desenhos, o FranzenArt busca construir uma comunidade onde as pessoas participam do processo criativo através de ideias e comentários.</p>
         </div>
       </div>
     </section>
 
     <section class="section-process" id="process-section">
       <div class="section-header">
-        <h2>Etapas de Desenvolvimento</h2>
+        <h2>Processo Artístico</h2>
         <div class="bar"></div>
       </div>
+      
+      <div class="process-intro-box reveal-on-scroll">
+        <p>Cada desenho do FranzenArt passa por diferentes etapas de criação, desde a escolha da ideia até o resultado final. O processo envolve pesquisa de referências, criação do esboço, construção dos detalhes, finalização e assinatura do artista.</p>
+      </div>
+
       <div class="process-flow">
         <div class="process-step reveal-on-scroll">
           <div class="step-icon">💡</div>
           <h3>Concepção</h3>
-          <p>Definição do tema, busca por referências visuais e estruturação mental da composição geral.</p>
+          <p>Escolha da ideia, referências visuais e definição do conceito do desenho.</p>
         </div>
         <div class="process-step reveal-on-scroll">
           <div class="step-icon">✏️</div>
           <h3>Esboço</h3>
-          <p>Marcação geométrica e linhas guias leves para ajustar proporções, volumes e anatomia básica.</p>
+          <p>Construção inicial do desenho, trabalhando proporções, composição e estrutura.</p>
         </div>
         <div class="process-step reveal-on-scroll">
-          <div class="step-icon">🖊️</div>
+          <div class="step-icon">✒️</div>
           <h3>Arte-Final</h3>
-          <p>Definição do traço permanente, controle de peso de linha e aplicação de texturas ou hachuras manuais.</p>
+          <p>Finalização dos detalhes, linhas, sombras, cores e assinatura do FranzenArt.</p>
         </div>
+      </div>
+    </section>
+
+    <section class="section-styles" id="styles-section">
+      <div class="section-header">
+        <h2>Estilos e Temas</h2>
+        <div class="bar"></div>
+      </div>
+      <div class="styles-grid">
+        <div class="style-card reveal-on-scroll">
+          <div class="style-card-icon">🎭</div>
+          <h3>Memes e Humor da Internet</h3>
+          <p>Transformando memes atuais e ideias da comunidade em desenhos com personalidade.</p>
+        </div>
+        <div class="style-card reveal-on-scroll">
+          <div class="style-card-icon">🎮</div>
+          <h3>Anime, Jogos e Cultura Pop</h3>
+          <p>Fanarts e ilustrações inspiradas em personagens e universos conhecidos.</p>
+        </div>
+        <div class="style-card reveal-on-scroll">
+          <div class="style-card-icon">📐</div>
+          <h3>Cartoon e Realismo</h3>
+          <p>Exploração de diferentes estilos para desenvolver versatilidade artística.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-materials" id="materials-section">
+      <div class="materials-container reveal-on-scroll">
+        <div class="section-header">
+          <h2>Materiais Utilizados</h2>
+          <div class="bar"></div>
+        </div>
+        <p class="materials-intro">As principais ferramentas utilizadas nas minhas artes tradicionais são:</p>
+        <ul class="materials-list">
+          <li><span>Lápis grafite</span></li>
+          <li><span>Lápis de cores</span></li>
+          <li><span>Caneta nanquim</span></li>
+          <li><span>Borracha</span></li>
+          <li><span>Apontador</span></li>
+          <li><span>Papel sulfite</span></li>
+          <li><span>Papel de maior gramatura (como 180g/m²)</span></li>
+        </ul>
       </div>
     </section>
 
     <section class="section-featured">
       <div class="featured-card reveal-on-scroll">
         <div class="featured-info-box">
-          <span class="spotlight-tag">Em Produção</span>
-          <h2>Projetos Recentes</h2>
-          <p class="featured-desc">Esta seção exibirá análises detalhadas de novos conceitos e desconstruções de etapas de arte-final conforme as novas pranchas forem concluídas.</p>
+          <h2>Trabalhos Recentes</h2>
+          <p class="featured-desc">Uma seleção dos desenhos mais recentes produzidos pelo FranzenArt, mostrando diferentes estilos, ideias e momentos da evolução artística.</p>
         </div>
       </div>
     </section>
 
     <section class="section-gallery" id="gallery-section">
       <div class="section-header">
-        <h2>Galeria de Estudos</h2>
+        <h2>Galeria de Portfólio</h2>
         <div class="bar"></div>
       </div>
 
       <div class="gallery-toolbar reveal-on-scroll">
-        <div class="tab-container" role="tablist" aria-label="Categorias de arte">
-          <button class="tab-btn active" role="tab" aria-selected="true" data-target="all">Todos os Trabalhos</button>
+        <div class="tab-container" role="tablist" aria-label="Filtrar desenhos por categorias">
+          <button class="tab-btn active" role="tab" aria-selected="true" data-target="all">Todos</button>
+          <button class="tab-btn" role="tab" aria-selected="false" data-target="memes">Memes</button>
+          <button class="tab-btn" role="tab" aria-selected="false" data-target="fanarts">Fanarts</button>
+          <button class="tab-btn" role="tab" aria-selected="false" data-target="cultura-pop">Cultura Pop</button>
+          <button class="tab-btn" role="tab" aria-selected="false" data-target="realismo">Realismo</button>
           <button class="tab-btn" role="tab" aria-selected="false" data-target="estudos">Estudos</button>
-          <button class="tab-btn" role="tab" aria-selected="false" data-target="finalizados">Trabalhos Concluídos</button>
         </div>
       </div>
 
       <div class="gallery-grid" id="main-gallery-grid">
-        <div class="art-card reveal-on-scroll" data-category="estudos" data-full="portfolio/estudo-01.webp" data-caption="Estudo de linhas e dinâmica de hachuras sobre papel de alta gramatura.">
+        <div class="art-card reveal-on-scroll" data-category="memes" data-full="portfolio/desenho-01.webp" data-caption="Desenho tradicional feito à mão livre inspirado em memes em alta na comunidade.">
           <div class="img-wrapper">
-            <div class="img-placeholder">Projeto em desenvolvimento</div>
-            <img src="portfolio/estudo-01.webp" alt="Estudo técnico de traço e iluminação" width="400" height="500" loading="lazy" class="gallery-img">
+            <div class="img-placeholder">Carregando Obra Artística...</div>
+            <img src="portfolio/desenho-01.webp" alt="Ilustração tradicional criada por Gabriel Franzen representando personagem da cultura pop e memes" width="400" height="500" loading="lazy" decoding="async" class="gallery-img">
           </div>
-          <div class="art-info"><h3>Estudo de Estrutura</h3><div class="art-meta"><span>Exploração Técnica</span></div></div>
+          <div class="art-info"><h3>Arte Tradicional</h3><div class="art-meta"><span>Memes &amp; Humor</span></div></div>
         </div>
         
-        <div class="art-card reveal-on-scroll" data-category="finalizados" data-full="portfolio/estudo-02.webp" data-caption="Composição trabalhada com nanquim fina e foco em profundidade tonal.">
+        <div class="art-card reveal-on-scroll" data-category="fanarts" data-full="portfolio/desenho-02.webp" data-caption="Estudo detalhado e finalização de personagem clássico de anime japonês sobre papel de alta gramatura.">
           <div class="img-wrapper">
-            <div class="img-placeholder">Projeto em desenvolvimento</div>
-            <img src="portfolio/estudo-02.webp" alt="Composição finalizada à mão livre" width="400" height="500" loading="lazy" class="gallery-img">
+            <div class="img-placeholder">Carregando Obra Artística...</div>
+            <img src="portfolio/desenho-02.webp" alt="Ilustração tradicional criada por Gabriel Franzen representando personagem de anime e cultura pop" width="400" height="500" loading="lazy" decoding="async" class="gallery-img">
           </div>
-          <div class="art-info"><h3>Composição Desenvolvida</h3><div class="art-meta"><span>Arte-Final</span></div></div>
+          <div class="art-info"><h3>Estudo de Personagem</h3><div class="art-meta"><span>Fanarts</span></div></div>
         </div>
+      </div>
+    </section>
+
+    <section class="section-community" id="comunidade-section">
+      <div class="community-card reveal-on-scroll">
+        <div class="section-header">
+          <h2>Comunidade FranzenArt</h2>
+          <div class="bar"></div>
+        </div>
+        <p>Uma das partes mais importantes do FranzenArt é a interação com quem acompanha o trabalho.</p>
+        <p>Muitas ideias de desenhos vêm diretamente dos comentários e sugestões dos seguidores, criando uma comunidade participativa onde todos podem fazer parte do processo.</p>
+      </div>
+    </section>
+
+    <section class="section-social-stats" id="social-stats-section">
+      <div class="stats-box reveal-on-scroll">
+        <h2>Acompanhe meu trabalho</h2>
+        <div class="bar" style="margin: 12px auto; width: 40px; height: 3px; background: var(--text);"></div>
+        <p class="stats-metric-text">Atualmente, o FranzenArt possui mais de 21 mil seguidores somando suas principais plataformas.</p>
       </div>
     </section>
 
@@ -173,16 +271,16 @@
       </div>
       <div class="faq-accordion-box">
         <details class="reveal-on-scroll">
-          <summary>Como funcionam as atualizações do sketchbook?</summary>
-          <p>Os desenhos e estudos são digitalizados e anexados periodicamente ao portfólio assim que novas páginas e cadernos físicos de rascunhos são completados.</p>
+          <summary>Quem é Gabriel Franzen?</summary>
+          <p>Gabriel Franzen é um artista tradicional e criador de conteúdo brasileiro responsável pelo FranzenArt.</p>
         </details>
         <details class="reveal-on-scroll">
-          <summary>Quais são os materiais comumente utilizados?</summary>
-          <p>A maior parte dos trabalhos envolve ferramentas analógicas tradicionais: grafites de diferentes graduações (HB a 6B), canetas técnicas de tinta nanquim e papéis opacos de superfícies variadas.</p>
+          <summary>Que tipo de desenho você faz?</summary>
+          <p>Produzo desenhos de memes, personagens, jogos, anime, cartoon, realismo e diversos temas enviados pela comunidade.</p>
         </details>
         <details class="reveal-on-scroll">
-          <summary>Os desenhos expostos possuem base digital?</summary>
-          <p>Não. A proposta central deste espaço é registrar a prática artística tradicional sobre o papel. Ajustes digitais limitam-se à correção de iluminação e contraste das capturas para exibição na web.</p>
+          <summary>Quais materiais você usa?</summary>
+          <p>Trabalho principalmente com lápis grafite, lápis de cores, nanquim e materiais tradicionais de desenho.</p>
         </details>
       </div>
     </section>
@@ -190,36 +288,37 @@
   </main>
 
   <div class="lightbox" id="artist-lightbox" role="dialog" aria-modal="true" aria-hidden="true" tabindex="-1">
-    <button class="lightbox-close" id="close-lightbox-btn" aria-label="Fechar visualização">&times;</button>
-    <button class="lightbox-nav prev" id="prev-lightbox-btn" aria-label="Imagem anterior">‹</button>
+    <button class="lightbox-close" id="close-lightbox-btn" aria-label="Fechar visualização expandida">&times;</button>
+    <button class="lightbox-nav prev" id="prev-lightbox-btn" aria-label="Desenho anterior">‹</button>
     <div class="lightbox-content">
-      <img id="lightbox-main-img" src="" alt="Visualização expandida">
+      <img id="lightbox-main-img" src="" alt="Ilustração do FranzenArt em exibição de alta resolução expandida" loading="lazy" decoding="async">
       <p id="lightbox-main-caption"></p>
       <div id="lightbox-main-counter"></div>
     </div>
-    <button class="lightbox-nav next" id="next-lightbox-btn" aria-label="Próxima imagem">›</button>
+    <button class="lightbox-nav next" id="next-lightbox-btn" aria-label="Próximo desenho">›</button>
   </div>
 
-  <button id="btn-home" class="btn-back-top" aria-label="Voltar para o topo" aria-hidden="true">↑</button>
+  <button id="btn-home" class="btn-back-top" aria-label="Voltar para o topo da página" aria-hidden="true">↑</button>
   <div id="toast-container" aria-live="polite"></div>
 
   <footer>
     <div class="footer-container">
-      <p>FranzenArt — Registro e Documentação Visual</p>
+      <p>FranzenArt — Gabriel Franzen | Artista tradicional e criador de conteúdo brasileiro</p>
+      <p class="footer-location">São Paulo, Brasil</p>
       <p class="footer-sub">Todo processo evolutivo é linear e contínuo.</p>
       
-      <div class="footer-socials" role="navigation" aria-label="Redes sociais oficiais">
-        <a href="https://www.tiktok.com/@franzen_art?_r=1&amp;_t=ZS-97owukqLV71" target="_blank" rel="noopener noreferrer" class="social-icon-link" aria-label="Acompanhar no TikTok">
+      <div class="footer-socials" role="navigation" aria-label="Redes sociais oficiais do artista">
+        <a href="https://www.tiktok.com/@franzen_art" target="_blank" rel="noopener noreferrer" class="social-icon-link" aria-label="Acompanhar o FranzenArt no TikTok">
           <svg class="icon-svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M12.53.02C13.84 0 15.14.01 16.44 0c.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.86-.74-3.94-1.74-.22-.2-.42-.43-.61-.67-.02 3.48 0 6.94-.02 10.41-.07 2.04-.73 4.14-2.11 5.63-1.61 1.77-4.09 2.52-6.43 2.24-2.43-.24-4.73-1.64-5.88-3.83-1.35-2.51-1.12-5.91.64-8.16 1.34-1.73 3.52-2.73 5.73-2.71.02 1.48-.01 2.94 0 4.42-.91-.07-1.85.16-2.6.7-.85.59-1.37 1.61-1.42 2.66-.08 1.41.73 2.79 2.01 3.39 1.18.57 2.63.43 3.67-.37.79-.59 1.22-1.54 1.24-2.53.03-3.78.02-7.57.02-11.35z"/>
           </svg>
         </a>
-        <a href="https://www.instagram.com/franzen__art?igsh=MWNpczVwb2EzODViYw==" target="_blank" rel="noopener noreferrer" class="social-icon-link" aria-label="Acompanhar no Instagram">
+        <a href="https://www.instagram.com/franzen__art/" target="_blank" rel="noopener noreferrer" class="social-icon-link" aria-label="Acompanhar o FranzenArt no Instagram">
           <svg class="icon-svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
           </svg>
         </a>
-        <a href="https://youtube.com/@franzenart?si=wRHxhEzcB_YO1rPq" target="_blank" rel="noopener noreferrer" class="social-icon-link" aria-label="Inscrever-se no YouTube">
+        <a href="https://youtube.com/@franzenart" target="_blank" rel="noopener noreferrer" class="social-icon-link" aria-label="Inscrever-se no canal do YouTube FranzenArt">
           <svg class="icon-svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
           </svg>
@@ -230,5 +329,5 @@
 
   <script src="js/script.js"></script>
 </body>
-  </html>
-  
+            </html>
+      
