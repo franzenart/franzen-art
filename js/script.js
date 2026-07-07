@@ -1,65 +1,86 @@
 /**
- * Experiência Imersiva FranzenArt 2026
- * Arquivo estritamente modular focado em performance Lighthouse e segurança estática
+ * Core Modular da Experiência FranzenArt 2026
+ * Estritamente em conformidade com segurança estática e performance pura.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  // --- MÓDULO 1: CURSOR DE LÁPIS SEGUIDOR ---
-  const cursor = document.getElementById('custom-pencil-cursor');
+  // --- 1. CURSOR SEGUIDOR EM FORMA DE LÁPIS ---
+  const pencilCursor = document.getElementById('custom-pencil-cursor');
   document.addEventListener('mousemove', (e) => {
-    if (cursor) {
-      cursor.style.left = e.clientX + 'px';
-      cursor.style.top = e.clientY + 'px';
+    if (pencilCursor) {
+      pencilCursor.style.left = e.clientX + 'px';
+      pencilCursor.style.top = e.clientY + 'px';
     }
   });
 
-  // --- MÓDULO 2: PROGRESSO DE LEITURA E CINEMATIC REVEAL ---
-  const progressBar = document.getElementById('scroll-progress');
-  const revealElements = document.querySelectorAll('.reveal-on-scroll');
+  // --- 2. CONTROLE DO MENU LATERAL MOBILE ---
+  const toggleBtn = document.getElementById('menu-toggle-btn');
+  const closeSidebarBtn = document.getElementById('close-sidebar-btn');
+  const sidebar = document.getElementById('mobile-sidebar');
 
-  const handleScrollEffects = () => {
-    // Barra superior
-    const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-    if (totalHeight > 0 && progressBar) {
-      const progress = (window.scrollY / totalHeight) * 100;
-      progressBar.style.width = `${progress}%`;
+  toggleBtn?.addEventListener('click', () => {
+    sidebar?.classList.add('active');
+    sidebar?.setAttribute('aria-hidden', 'false');
+  });
+
+  const closeSidebar = () => {
+    sidebar?.classList.remove('active');
+    sidebar?.setAttribute('aria-hidden', 'true');
+  };
+
+  closeSidebarBtn?.addEventListener('click', closeSidebar);
+  document.querySelectorAll('.sidebar-link').forEach(link => {
+    link.addEventListener('click', closeSidebar);
+  });
+
+  // --- 3. PROGRESSO CINEMÁTICO DE ROLAGEM E REVEAL ---
+  const scrollProgress = document.getElementById('scroll-progress');
+  const revealElements = document.querySelectorAll('.reveal-on-scroll');
+  const btnHome = document.getElementById('btn-home');
+
+  const onScrollHandler = () => {
+    // Barra de leitura superior
+    const winScroll = window.scrollY;
+    const height = document.documentElement.scrollHeight - window.innerHeight;
+    if (height > 0 && scrollProgress) {
+      const scrolled = (winScroll / height) * 100;
+      scrollProgress.style.width = scrolled + '%';
     }
 
-    // Efeito de surgimento suave das seções
+    // Surgimento de blocos na tela
     revealElements.forEach(el => {
-      const elementTop = el.getBoundingClientRect().top;
-      if (elementTop < window.innerHeight * 0.88) {
+      const elTop = el.getBoundingClientRect().top;
+      if (elTop < window.innerHeight * 0.88) {
         el.classList.add('visible');
       }
     });
 
-    // Botão Voltar ao Topo
-    const btnHome = document.getElementById('btn-home');
-    if (window.scrollY > 400) {
+    // Botão de retornar ao topo
+    if (winScroll > 500) {
       btnHome?.classList.add('visible');
     } else {
       btnHome?.classList.remove('visible');
     }
   };
 
-  window.addEventListener('scroll', handleScrollEffects, { passive: true });
-  handleScrollEffects(); // Execução inicial
+  window.addEventListener('scroll', onScrollHandler, { passive: true });
+  onScrollHandler(); // Disparo inicial preventivo
 
-  // --- MÓDULO 3: FILTRO DE ABAS E BUSCA DINÂMICA INTEGRADA ---
-  const tabs = document.querySelectorAll('.tab-btn');
-  const cards = document.querySelectorAll('.art-card');
-  const searchInput = document.getElementById('gallery-search');
-  let currentActiveCategory = 'all';
+  // --- 4. ENGINE DE BUSCA E ABAS SEM QUEBRA ---
+  const tabButtons = document.querySelectorAll('.tab-btn');
+  const artCards = document.querySelectorAll('.art-card');
+  const searchBar = document.getElementById('gallery-search');
+  let activeCategory = 'all';
 
-  const filterGallery = () => {
-    const query = searchInput?.value.toLowerCase().trim() || "";
-    
-    cards.forEach(card => {
-      const categoryMatch = currentActiveCategory === 'all' || card.dataset.category === currentActiveCategory;
-      const searchMatch = card.dataset.title.includes(query);
-      
-      if (categoryMatch && searchMatch) {
+  const runGalleryFilters = () => {
+    const filterQuery = searchBar?.value.toLowerCase().trim() || "";
+
+    artCards.forEach(card => {
+      const isCorrectCategory = activeCategory === 'all' || card.dataset.category === activeCategory;
+      const isSearchMatch = card.dataset.title.includes(filterQuery);
+
+      if (isCorrectCategory && isSearchMatch) {
         card.style.display = "block";
       } else {
         card.style.display = "none";
@@ -67,142 +88,135 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   };
 
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      tabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
-      tab.classList.add('active');
-      tab.setAttribute('aria-selected', 'true');
-      
-      currentActiveCategory = tab.dataset.target;
-      filterGallery();
-    });
-  });
-
-  searchInput?.addEventListener('input', filterGallery);
-
-  // --- MÓDULO 4: MECÂNICA DE FAVORITOS (LOCALSTORAGE SEGURO) ---
-  const favButtons = document.querySelectorAll('.btn-fav');
-  
-  // Inicializar estados
-  favButtons.forEach(btn => {
-    const id = btn.dataset.favId;
-    if (localStorage.getItem(`fav_${id}`) === 'true') {
+  tabButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabButtons.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected', 'false'); });
       btn.classList.add('active');
-    }
-    
-    btn.addEventListener('click', (e) => {
-      e.stopPropagation(); // Evita disparar o Lightbox ao favoritar
-      btn.classList.toggle('active');
-      const isActive = btn.classList.contains('active');
-      localStorage.setItem(`fav_${id}`, isActive ? 'true' : 'false');
-      showToast(isActive ? "Obra favoritada no seu navegador!" : "Removido dos favoritos.");
+      btn.setAttribute('aria-selected', 'true');
+      
+      activeCategory = btn.dataset.target;
+      runGalleryFilters();
     });
   });
 
-  // --- MÓDULO 5: CICLO DE TEMAS AVANÇADOS ---
-  const btnTheme = document.getElementById('btn-theme');
-  const themeText = document.getElementById('theme-text');
-  const themes = ['artistico', 'pb', 'papel'];
-  let currentThemeIdx = themes.indexOf(document.body.getAttribute('data-theme') || 'artistico');
+  searchBar?.addEventListener('input', runGalleryFilters);
 
-  // Recupera do cache do navegador se houver
-  const cachedTheme = localStorage.getItem('franzen_art_theme');
-  if (cachedTheme && themes.includes(cachedTheme)) {
-    document.body.setAttribute('data-theme', cachedTheme);
-    currentThemeIdx = themes.indexOf(cachedTheme);
-    if(themeText) themeText.textContent = `Tema: ${cachedTheme.toUpperCase()}`;
+  // --- 5. CONTROLE DE FAVORITOS (LOCALSTORAGE SEGURO) ---
+  document.querySelectorAll('.btn-fav').forEach(favBtn => {
+    const favId = favBtn.dataset.favId;
+    
+    if (localStorage.getItem(`franzen_fav_${favId}`) === 'true') {
+      favBtn.classList.add('active');
+    }
+
+    favBtn.addEventListener('click', (e) => {
+      e.stopPropagation(); // Evita a abertura acidental do Lightbox
+      favBtn.classList.toggle('active');
+      const isSaved = favBtn.classList.contains('active');
+      localStorage.setItem(`franzen_fav_${favId}`, isSaved ? 'true' : 'false');
+      triggerToast(isSaved ? "Salvo no seu rolo de favoritos!" : "Removido dos favoritos.");
+    });
+  });
+
+  // --- 6. CICLO DE TEMAS DE PAPEL AVANÇADO ---
+  const themeButton = document.getElementById('btn-theme');
+  const themeList = ['artistico', 'pb', 'papel'];
+  let activeThemeIndex = themeList.indexOf(document.body.getAttribute('data-theme') || 'artistico');
+
+  const savedTheme = localStorage.getItem('franzen_app_theme');
+  if (savedTheme && themeList.includes(savedTheme)) {
+    document.body.setAttribute('data-theme', savedTheme);
+    activeThemeIndex = themeList.indexOf(savedTheme);
   }
 
-  btnTheme?.addEventListener('click', () => {
-    currentThemeIdx = (currentThemeIdx + 1) % themes.length;
-    const nextTheme = themes[currentThemeIdx];
+  themeButton?.addEventListener('click', () => {
+    activeThemeIndex = (activeThemeIndex + 1) % themeList.length;
+    const nextTheme = themeList[activeThemeIndex];
     document.body.setAttribute('data-theme', nextTheme);
-    localStorage.setItem('franzen_art_theme', nextTheme);
-    if(themeText) themeText.textContent = `Tema: ${nextTheme.toUpperCase()}`;
-    showToast(`Visual alterado para modo ${nextTheme}`);
+    localStorage.setItem('franzen_app_theme', nextTheme);
+    triggerToast(`Textura alterada: Modo ${nextTheme.toUpperCase()}`);
   });
 
-  // --- MÓDULO 6: CENTRAL TOAST ---
-  function showToast(msg) {
+  // --- 7. NOTIFICAÇÕES TOAST INTEGRAIS ---
+  function triggerToast(text) {
     const container = document.getElementById('toast-container');
     if (!container) return;
     container.innerHTML = '';
-    const toast = document.createElement('div');
-    toast.className = 'toast';
-    toast.textContent = msg;
-    container.appendChild(toast);
-    setTimeout(() => { if(toast) toast.remove(); }, 2800);
+    const toastBox = document.createElement('div');
+    toastBox.className = 'toast';
+    toastBox.textContent = text;
+    container.appendChild(toastBox);
+    setTimeout(() => { if (toastBox) toastBox.remove(); }, 2900);
   }
 
-  // --- MÓDULO 7: LIGHTBOX PREMIUM TOTAL ---
-  const lightbox = document.getElementById('lightbox');
-  const lightboxImg = document.getElementById('lightbox-img');
-  const lightboxCaption = document.getElementById('lightbox-caption');
-  const lightboxCounter = document.getElementById('lightbox-counter');
+  // --- 8. LIGHTBOX DE ELITE COM ROTAÇÃO E CONTADOR ---
+  const lightboxElement = document.getElementById('artist-lightbox');
+  const lightboxImg = document.getElementById('lightbox-main-img');
+  const lightboxCaption = document.getElementById('lightbox-main-caption');
+  const lightboxCounter = document.getElementById('lightbox-main-counter');
   
-  let visibleCards = [];
-  let currentIndex = 0;
+  let operationalCards = [];
+  let lightboxTrackIndex = 0;
 
-  const updateLightboxContent = () => {
-    if (visibleCards.length === 0) return;
-    const card = visibleCards[currentIndex];
-    if (lightboxImg) lightboxImg.src = card.dataset.full;
-    if (lightboxCaption) lightboxCaption.textContent = card.dataset.caption;
-    if (lightboxCounter) lightboxCounter.textContent = `${currentIndex + 1} / ${visibleCards.length}`;
+  const renderLightboxView = () => {
+    if (operationalCards.length === 0) return;
+    const activeCard = operationalCards[lightboxTrackIndex];
+    if (lightboxImg) lightboxImg.src = activeCard.dataset.full;
+    if (lightboxCaption) lightboxCaption.textContent = activeCard.dataset.caption;
+    if (lightboxCounter) lightboxCounter.textContent = `${lightboxTrackIndex + 1} de ${operationalCards.length}`;
   };
 
   document.addEventListener('click', (e) => {
-    const card = e.target.closest('.art-card');
-    if (!card) return;
-    
-    // Filtra apenas as imagens que estão aparecendo na tela no momento atual
-    visibleCards = Array.from(cards).filter(c => c.style.display !== 'none');
-    currentIndex = visibleCards.indexOf(card);
-    
-    if (currentIndex !== -1 && lightbox) {
-      updateLightboxContent();
-      lightbox.classList.add('active');
-      lightbox.setAttribute('aria-hidden', 'false');
+    const cardElement = e.target.closest('.art-card');
+    if (!cardElement) return;
+
+    operationalCards = Array.from(artCards).filter(c => c.style.display !== 'none');
+    lightboxTrackIndex = operationalCards.indexOf(cardElement);
+
+    if (lightboxTrackIndex !== -1 && lightboxElement) {
+      renderLightboxView();
+      lightboxElement.classList.add('active');
+      lightboxElement.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
     }
   });
 
-  const closeLightbox = () => {
-    lightbox?.classList.remove('active');
-    lightbox?.setAttribute('aria-hidden', 'true');
+  const dismissLightbox = () => {
+    lightboxElement?.classList.remove('active');
+    lightboxElement?.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
   };
 
-  document.getElementById('lightbox-close')?.addEventListener('click', closeLightbox);
-  document.getElementById('lightbox-next')?.addEventListener('click', () => {
-    if(visibleCards.length <= 1) return;
-    currentIndex = (currentIndex + 1) % visibleCards.length;
-    updateLightboxContent();
-  });
-  document.getElementById('lightbox-prev')?.addEventListener('click', () => {
-    if(visibleCards.length <= 1) return;
-    currentIndex = (currentIndex - 1 + visibleCards.length) % visibleCards.length;
-    updateLightboxContent();
+  document.getElementById('close-lightbox-btn')?.addEventListener('click', dismissLightbox);
+  
+  document.getElementById('next-lightbox-btn')?.addEventListener('click', () => {
+    if (operationalCards.length <= 1) return;
+    lightboxTrackIndex = (lightboxTrackIndex + 1) % operationalCards.length;
+    renderLightboxView();
   });
 
-  lightbox?.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+  document.getElementById('prev-lightbox-btn')?.addEventListener('click', () => {
+    if (operationalCards.length <= 1) return;
+    lightboxTrackIndex = (lightboxTrackIndex - 1 + operationalCards.length) % operationalCards.length;
+    renderLightboxView();
+  });
+
+  lightboxElement?.addEventListener('click', (e) => { if (e.target === lightboxElement) dismissLightbox(); });
 
   document.addEventListener('keydown', (e) => {
-    if (!lightbox?.classList.contains('active')) return;
-    if (e.key === 'Escape') closeLightbox();
-    if (e.key === 'ArrowRight') document.getElementById('lightbox-next')?.click();
-    if (e.key === 'ArrowLeft') document.getElementById('lightbox-prev')?.click();
+    if (!lightboxElement?.classList.contains('active')) return;
+    if (e.key === 'Escape') dismissLightbox();
+    if (e.key === 'ArrowRight') document.getElementById('next-lightbox-btn')?.click();
+    if (e.key === 'ArrowLeft') document.getElementById('prev-lightbox-btn')?.click();
   });
 
-  // Copiar link externo
+  // Copiar link e retorno ao topo
   document.getElementById('btn-copy-link')?.addEventListener('click', () => {
     navigator.clipboard.writeText(window.location.href)
-      .then(() => showToast("✔ Link copiado com sucesso!"))
-      .catch(() => showToast("Erro ao copiar link."));
+      .then(() => triggerToast("✔ Link da experiência copiado!"))
+      .catch(() => triggerToast("Erro ao copiar."));
   });
 
-  document.getElementById('btn-home')?.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
+  btnHome?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 });
-                          
+      
