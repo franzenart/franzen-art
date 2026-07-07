@@ -1,32 +1,42 @@
 document.addEventListener('DOMContentLoaded', () => {
   
-  // Lógica das Seções / Abas (Tabs)
+  // 1. SISTEMA DE ABAS TOTALMENTE ISOLADO
   const tabs = document.querySelectorAll('.tab-btn');
   const contents = document.querySelectorAll('.tab-content');
 
   tabs.forEach(tab => {
     tab.addEventListener('click', () => {
+      // Remove a classe ativa de todos os botões e abas de conteúdo
       tabs.forEach(t => t.classList.remove('active'));
       contents.forEach(c => c.classList.remove('active'));
 
+      // Ativa apenas a aba clicada
       tab.classList.add('active');
       const targetId = `category-${tab.dataset.target}`;
-      document.getElementById(targetId)?.classList.add('active');
+      const targetContent = document.getElementById(targetId);
+      
+      if (targetContent) {
+        targetContent.classList.add('active');
+      }
     });
   });
 
-  // Lógica de Alternar Tema (Artistico / P&B)
+  // 2. ALTERNAR VISUAL (TEMA ARTÍSTICO / P&B)
   const btnTheme = document.getElementById('btn-theme');
+  
+  // Carrega a preferência salva no navegador do usuário
   if (localStorage.getItem('franzen_theme') === 'pb') {
     document.body.classList.add('tema-pb');
   }
+
   btnTheme?.addEventListener('click', () => {
     document.body.classList.toggle('tema-pb');
-    localStorage.setItem('franzen_theme', document.body.classList.contains('tema-pb') ? 'pb' : 'artistico');
-    showToast("Visual alterado com sucesso!");
+    const isPB = document.body.classList.contains('tema-pb');
+    localStorage.setItem('franzen_theme', isPB ? 'pb' : 'artistico');
+    showToast(isPB ? "Visual alterado para Preto & Branco!" : "Visual alterado para Tema Artístico!");
   });
 
-  // Copiar Link com Toast
+  // 3. COPIAR LINK DO PORTFÓLIO
   const btnCopy = document.getElementById('btn-copy-link');
   btnCopy?.addEventListener('click', () => {
     navigator.clipboard.writeText(window.location.href)
@@ -34,6 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
       .catch(() => showToast("Erro ao copiar link."));
   });
 
+  // 4. TOAST NOTIFICATION DE CONFIRMAÇÃO
   function showToast(msg) {
     const container = document.getElementById('toast-container');
     if (!container) return;
@@ -44,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => toast.remove(), 3000);
   }
 
-  // Lightbox Premium Integrado
+  // 5. LIGHTBOX PREMIUM (ZOMM DA IMAGEM)
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightbox-img');
   const lightboxCaption = document.getElementById('lightbox-caption');
@@ -55,10 +66,11 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentCards = [];
   let currentIndex = 0;
 
-  // Atualiza a lista de cards clicáveis baseado na seção ativa
   const updateActiveCards = () => {
     const activeSection = document.querySelector('.tab-content.active');
-    currentCards = Array.from(activeSection.querySelectorAll('.art-card'));
+    if (activeSection) {
+      currentCards = Array.from(activeSection.querySelectorAll('.art-card'));
+    }
   };
 
   document.addEventListener('click', (e) => {
@@ -71,6 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   const openLightbox = (card) => {
+    if (!card) return;
     lightboxImg.src = card.dataset.full;
     lightboxCaption.textContent = card.dataset.caption;
     lightbox.classList.add('active');
@@ -101,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
   prevBtn?.addEventListener('click', prevImg);
   lightbox?.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
 
-  // Botão de Voltar ao Topo
+  // 6. BOTÃO VOLTAR AO TOPO
   const btnHome = document.getElementById('btn-home');
   window.addEventListener('scroll', () => {
     if (window.scrollY > 400) {
@@ -112,4 +125,4 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   btnHome?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 });
-                    
+    
